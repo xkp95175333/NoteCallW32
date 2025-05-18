@@ -12,6 +12,107 @@ Win_11_24h2_3323
   [🔹] Symbol g_KernelHashBucketList Offset: 893064
   [🔹] Symbol g_HashCacheLock Offset: 266144
 ```
+```
+
+
+╭──────────────────╮
+│  🧩  win32k.sys   │
+╰──────────────────╯
+//📌NtUserSetWindowDisplayAffinity	.text	FFFFF97FFF00EA5C	00000046	00000028	00000008	R	.	.	.	.	.	.	T	.
+__int64 (__fastcall *__fastcall NtUserSetWindowDisplayAffinity(__int64 a1, unsigned int a2))(__int64, _QWORD)
+{
+  __int64 (__fastcall *result)(__int64, _QWORD); // rax
+
+  result = *(__int64 (__fastcall **)(__int64, _QWORD))(*(_QWORD *)(*(_QWORD *)(W32GetSessionState() + 0x88) + 0x150LL)
+                                                     + 0xD78LL);
+  if ( result )
+    return (__int64 (__fastcall *)(__int64, _QWORD))result(a1, a2);
+  return result;
+}
+//📌__win32kstub_NtUserSetWindowDisplayAffinity	.text	FFFFF97FFF02A870	00000006	00000000		R	.	.	.	.	.	.	.	.
+__int64 _win32kstub_NtUserSetWindowDisplayAffinity()
+{
+  return 0x581LL;
+}
+//📌_stub_UserSetWindowDisplayAffinity	.text	FFFFF97FFF067580	000000A7	00000048		R	.	.	.	.	.	.	.	.
+__int64 __fastcall stub_UserSetWindowDisplayAffinity(__int64 a1, unsigned int a2)
+{
+  __int64 result; // rax
+
+  if ( !(unsigned __int8)IsWin32KSyscallFiltered() )
+    return (__int64)NtUserSetWindowDisplayAffinity(a1, a2);
+  NtUserWin32kSysCallFilterStub();
+  if ( !(unsigned __int8)PsIsWin32KFilterEnabled() )
+    return (__int64)NtUserSetWindowDisplayAffinity(a1, a2);
+  result = (unsigned int)W32pServiceTableFilter[4 * W32pServiceLimitFilter + 0x581];
+  if ( (int)result > 0 )
+    return 0xC000001CLL;
+  return result;
+}
+
+
+╭───────────────────────╮
+│  🧩 win32kfull.sys    │
+╰───────────────────────╯
+
+ 
+__int64 __fastcall NtUserSetWindowDisplayAffinity(__int64 a1, int a2)
+{
+  __int64 v4; // rax
+  __int64 v5; // rbx
+  __int64 v6; // rdi
+  __int64 CurrentProcessWin32Process; // rax
+  __int64 v8; // r8
+  __int64 v9; // rdx
+  __int64 v10; // rcx
+  __int64 DesktopWindow; // rax
+  struct tagWND *v13; // rcx
+  __int64 v14; // rdx
+
+  EnterCrit(0LL, 0LL);
+  v4 = ValidateReceivingHwnd(a1, 1LL);
+  v5 = 0LL;
+  v6 = v4;
+  if ( v4 )
+  {
+    CurrentProcessWin32Process = PsGetCurrentProcessWin32Process();
+    v8 = CurrentProcessWin32Process;
+    if ( CurrentProcessWin32Process )
+      v8 = -(__int64)(*(_QWORD *)CurrentProcessWin32Process != 0LL) & CurrentProcessWin32Process;
+    if ( *(_QWORD *)(*(_QWORD *)(v6 + 0x10) + 0x1D0LL) == v8 )
+    {
+      v9 = *(_QWORD *)(v6 + 0x68);
+      if ( v9 && (*(_DWORD *)(*(_QWORD *)(v9 + 0x10) + 0x550LL) & 0x40000) != 0 )
+        v6 = *(_QWORD *)(v6 + 0x68);
+      if ( *(_QWORD *)(v6 + 0x68)
+        && (DesktopWindow = GetDesktopWindow(v6), v14 == DesktopWindow)
+        && (!a2 || (a2 & 0x11) != 0) )
+      {
+        if ( (unsigned int)SetDisplayAffinity(v13) )
+        {
+          v5 = 1LL;
+          goto LABEL_11;
+        }
+        v10 = 8LL;
+      }
+      else
+      {
+        v10 = 0x57LL;
+      }
+    }
+    else
+    {
+      v10 = 5LL;
+    }
+    UserSetLastError(v10);
+  }
+LABEL_11:
+  UserSessionSwitchLeaveCrit();
+  return v5;
+}
+
+```
+
 
 ```amdacpafd.sys: //ไดรเวอร์ที่เกี่ยวข้องกับ AMD Audio CoProcessor สำหรับการประมวลผลเสียง
 

@@ -12,6 +12,8 @@ Win_11_24h2_3323
   [🔹] Symbol g_KernelHashBucketList Offset: 893064
   [🔹] Symbol g_HashCacheLock Offset: 266144
 ```
+code c
+
 ```
 
 

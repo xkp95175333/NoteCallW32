@@ -1,5 +1,8 @@
 
  
+#pragma region FunXorArena
+
+ 
 //ฟังชั้นหลัก
 void* sub_1442F3CF0()
 {
@@ -257,6 +260,951 @@ void* sub_1442F3CF0()
                 //Up	w	sub_1442F3CF0 + 5A	mov     cs : byte_14A8EA849, 1
                 //.text:00000001442F3D4A C6 05 F8 6A 5F 06 01                          mov     cs:byte_14A8EA849, 1
 
+                .text:00000001442F3D0E FF 15 54 C2 62 03                             call    cs : qword_14791FF68; Indirect Call Near Procedure
+                put X 
+                [
+                    Direction	Type	Address	Text
+                        Up	r.text:0000000140B5AA85	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000140B5AABC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:000000014193DD50	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001428007CC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001428007EF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000143260E1D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000143260E81	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001434ADCF4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001435FAD88	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:000000014363CB69	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:000000014385163B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000143851667	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000143851EB1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001438520A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001438520CE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000143853937	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000143975D36	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000143975E19	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000143975F10	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000143CBE20D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001441447FA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001441454B8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001441454EA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001441B77EE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001441B781E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001441BDDA0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001441BDDD0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:00000001441C6218	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:000000014424DCD9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:0000000144252478	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r.text:000000014425298D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000144344C42	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000144344D1E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000144344F60	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014434B9E2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014435A4BD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014435B6FB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:00000001443699F4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014436A00E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014436D227	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014436D6CA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014436D77C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014436DD84	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014436DDE8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:00000001443A47E8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014568327A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000145992C2D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146002826	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146018FBB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014642E449	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146488409	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:00000001466F0979	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:000000014686F1F3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146C03E1D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146C04160	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146C06F00	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146C09B22	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146C09E44	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146C09EFD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146DB4E6E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r.text:0000000146F44B34	jmp     cs : qword_14791FF68; Indirect Near Jump
+                        Down	r.text:0000000146F51171	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14064DC00 + 9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B5B710 + 444	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B5B710 + 791	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B66700 + 162	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B66700 + 18	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B66930 + 15	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B6BD60 + 25E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B70A10 + 1138	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B73480 + 49	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B73480 + 59	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140B79900 + 9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140DD45D0 + 9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140E5DD90 + 5E0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_140E5DD90 + 80C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141173DC0 + 1CD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1414A6120 + 2D2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1414A6120 + 4A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1414A6120 + D4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141779FF0 + 23	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141779FF0 + 39	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14177CC40 + 2F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14177CC40 + 4B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14189E9E0 + 327	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1418C3EB0 + 10D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1418FF980 + 21	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141930360 + 1F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141969670 + 2E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141A02FC0 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141A0B810 + 1C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141A0B810 + A2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141A1B5B0 + 5C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141A3F1D0 + 80	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D46580 + 1E0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D46580 + 2A2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D46580 + 399	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D46A00 + 1EA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D46A00 + 2B8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D46A00 + 3AF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D46EA0 + 206	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D46EA0 + 374	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D46EA0 + 46B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D5AC10 + 21	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D63640 + 684	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D63640 + 748	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D63640 + 83E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D64440 + 392	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D64440 + 457	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D64440 + 54E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D67920 + 27D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D67920 + 341	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D67920 + 437	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D792E0 + 100	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D792E0 + 13B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D9DDC0 + 1EA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D9DDC0 + 2C2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D9DDC0 + 3B9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D9E270 + 1EA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D9E270 + 2B9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D9E270 + 3B0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D9E710 + 1EA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D9E710 + 2B9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141D9E710 + 3B0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DA9A40 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DB3960 + 10F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DB3960 + 13C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DB3960 + 22	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DB3960 + 83	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DB5200 + 2A6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DB5200 + 330	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DBDD20 + 24F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DBDD20 + 314	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DBDD20 + 40B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DC0FE0 + 29B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DC0FE0 + 385	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DC0FE0 + 47D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DC4530 + 78	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DDA980 + 209	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DDA980 + 2CE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DDA980 + 3C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE0A10 + 3C7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE0A10 + 4D7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE0A10 + 5CE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE0A10 + 94B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE0A10 + A5B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE0A10 + B52	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE32E0 + 392	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE32E0 + 457	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE32E0 + 54E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE6520 + 192	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE6520 + 30	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE7780 + 24	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE7820 + 28	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE78B0 + 28	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141DE7940 + 28	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_141EDF6C0 + C3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14223B7D0 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14224E220 + 15	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142251950 + 42	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1424DD5D0 + 9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1424DD610 + 9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14259E310 + 1FE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14259E310 + 2C3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14259E310 + 3C1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1425FBC00 + 1AA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142622810 + 199	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142622810 + 1C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142624700 + 310	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142907C80 + 13	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142910AC0 + 71	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142931520 + 28	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142931520 + 4C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1429318D0 + 246	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1429318D0 + A2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142931C70 + 32	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142931C70 + 56	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142931C70 + E7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142999CD0 + AD7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142999CD0 + B3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14299C240 + 1E9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1429A3800 + 3F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142AD00A0 + 461	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142AD0D70 + 3BA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142B65990 + 101	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142B65990 + E93	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142B9F7C0 + 1F3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142B9F7C0 + 368	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142B9F7C0 + 45F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BB34F0 + 2C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BB34F0 + 3CE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BB34F0 + 4C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BB3AB0 + 2BF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BB3AB0 + 420	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BB3AB0 + 517	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BB7ED0 + 53A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BD79D0 + 210	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BD79D0 + 2D5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BD79D0 + 3CC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BDFA20 + 2C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BDFA20 + 3CE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142BDFA20 + 4C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142F4F5C0 + 256	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142F4F5C0 + 705	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142F4F5C0 + CFE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_142F874E0 + 38	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143305090 + 11D3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143305090 + 1291	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143305090 + 1386	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143305090 + 6E0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143305090 + 79E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143305090 + 895	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433A9AB0 + 491	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433A9AB0 + 567	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433A9AB0 + 665	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433A9AB0 + DD2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433A9AB0 + EA6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433A9AB0 + FA6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433B0F40 + 2CC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433B0F40 + 37C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433B0F40 + 47A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433B1750 + 2B6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433B1750 + 366	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433B1750 + 464	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433C0560 - 174	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433C0560 - 249	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433C0560 - 73	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433CFAD0 + 20D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433CFAD0 + 2CD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433CFAD0 + 3C4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433CFF90 + 20D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433CFF90 + 2CD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1433CFF90 + 3C4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143462FC0 + 1C4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143462FC0 + 6E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1434BCEB0 + 4FD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1434BCEB0 + 516	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1434BCEB0 + 750	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143536CF0 + 157	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143536CF0 + 24E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143536CF0 + 31	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143537020 + 1E8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143537020 + 29	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143537020 + C4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435372F0 + 35	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435372F0 + 545	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435372F0 + 667	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435438E0 + 165	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435438E0 + 58	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FAE00 + 161	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FAE00 + 60	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FB050 + 1F4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FB050 + 2E0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FB050 + 3E1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FF560 + 1F5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FF560 + 2C3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FF560 + 3C3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FFE00 + 1F8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FFE00 + 2C6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1435FFE00 + 3C6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1436032C0 + 288	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1436032C0 + 353	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1436032C0 + 454	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1436070A0 + 39	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1436070A0 + 93	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143627DC0 + 1FB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143627DC0 + 2C7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143627DC0 + 3C8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143629240 + 31D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143629240 + 3DA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143629240 + 4DB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143629F20 + 1F3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143629F20 + 2B0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143629F20 + 3B1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362BCC0 + 1F1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362BCC0 + 2AE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362BCC0 + 3AF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362C170 + 37A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362C170 + 448	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362C170 + 54B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362C170 + 859	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362C170 + 923	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362C170 + A26	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362C170 + CF1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362C170 + DC1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362C170 + EBF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362EAA0 + 283	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362EAA0 + 34C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362EAA0 + 44C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362F000 + 283	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362F000 + 34C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362F000 + 44C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362F560 + 283	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362F560 + 34C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14362F560 + 44C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14363B740 + 5E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143669E20 + 1E6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143669E20 + 85	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1436E4F20 + 53	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143852190 : loc_143852260	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143864100 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14386AAE0 + 1F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14386AAE0 + 2B0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143980450 + 209	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143980450 + 2CE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143980450 + 3C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143986450 + 286	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143986450 + 359	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143986450 + 449	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143986450 + 50A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1439AAD60 + 201	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1439AAD60 + 2C6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1439AAD60 + 3BD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1439E7BB0 + 1F6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1439E7BB0 + 2D4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1439E7BB0 + 3CB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143A00480 + 2F2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143A00480 + 3A3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143A00480 + 49E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143A0C240 + 126E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143A0C240 + A07	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143A395D0 + 24F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143A3F840 + 206	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143AE6C10 + 23B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143AE6C10 + 32E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143B600E0 + 132	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143B600E0 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143B87CE0 + 5E8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143B87CE0 + 8D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143C25FF0 + 157	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143C3A920 + 7E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143CB1840 + 188	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143CC7DC0 + 2A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143CCA620 + 3C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143CCA620 + 437	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_143CCA620 + 4BD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144145280 + 2D5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441455D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441455D0 + B8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441530F0 + 54	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441530F0 + D5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144153260 + 157	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144153260 + 77	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144166A40 + 20	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144166A40 + 6C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14418A770 + B1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14418A770 + DE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14418A9C0 + 13A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14418A9C0 + 2A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14418A9C0 + 94	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144190D70 + 9A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144190D70 + C7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144190ED0 + 9A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144190ED0 + C7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144191AB0 + 83	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144191AB0 + B2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144191C00 + 83	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144191C00 + B2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144191F90 + 9A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144191F90 + C7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441A0B40 + 52	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441A8D90 + B4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441A8D90 + F8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441A9A50 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441A9A50 + D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AA970 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AA970 + D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AAB00 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AAB00 + D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AAC80 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AAC80 + D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AB2D0 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AB2D0 + D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AE4C0 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AE4C0 + CD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AE640 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441AE640 + D2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441B0460 + 9E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441B0460 + CE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441B5370 + A5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441B5370 + D5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441B8210 + 2E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441B8210 + 5E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BBFF0 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BBFF0 + D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BC210 + 5D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BC210 + AE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BC380 + AD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BC380 + FE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BC540 + AD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BC540 + F9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BC710 + AD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BC710 + F9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BCDF0 + B1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BCDF0 + E4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BE240 + AF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BE240 + E3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BE480 + BD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441BE480 + FB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441C5050 + AB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441C5470 + 17	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441C6230 + 1C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441C8170 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441C9790 + 89	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441C9790 + B9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441C98F0 + 82	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441C98F0 + B3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441E85A0 + 260	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1441E85A0 + 34	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_14424DD50 + 1C2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144256150 + 470	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144256150 + B5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442943D0 + 5E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_144295820 + 53	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442992F0 + 7A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442A0C10 + 215	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442A2FE0 + 6F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442A4690 + 68	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442A66C0 + 319	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442B9C60 + 1D2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442BAF80 + 39	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442BAF80 + A8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442BBF50 + 5D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442BBF50 + A1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442BD3B0 + 134	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442BD3B0 + 17E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442BD3B0 + EE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442C4E80 + 43	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442E0880 + 27	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442E0980 + 27	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Up	r	sub_1442E0A70 + 28	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        r	sub_1442F3CF0 + 1E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443070F0 + 17	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443070F0 + 55	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14430AE00 + 81	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14430E500 + 13	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14430E500 + 6C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14430F800 + 1B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14430F800 + 67	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144348640 + 217	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144348640 + 3A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443515E0 + 1E6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443515E0 + 2E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443515E0 + D3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144351800 + 170	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144351800 + 1C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144351800 + 27A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144351EE0 + 934	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144351EE0 + DD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144352D80 + 2E3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144352D80 + AE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144353220 + B8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144354B20 + D5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435A1D0 + 123	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435A1D0 + 47	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435BF00 + 1B2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435BF00 + 7B7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435C6F0 + 631	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435C6F0 + 8B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435CD60 + 35B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435CD60 + 51B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435D480 + 10AD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435D480 + AC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435E570 + 2BB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14435E570 + 6C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144362580 + 165	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144362580 + 23B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144362580 + 7A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144362820 + 41	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144363000 + 1A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144363000 + 394	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144363000 + 88	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443633D0 + 1E5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443633D0 + 2F3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443633D0 + A1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144363700 + 22A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144363700 + B1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436A050 + 105	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436AE80 - 3EB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436BE10 + 179	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436BE10 + 247	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436BE10 + 329	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436BE10 + 44D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436BE10 + 57E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436BE10 + 654	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436BE10 + 791	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436BE10 + 7E3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436BE10 + 835	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436DFB0 + 1B1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436E4C0 + 137	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436E890 + 25A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436E890 + 39B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436E890 + 4F1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436E890 + 5DD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436E890 + 723	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436E890 + 77D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436E890 + 7D7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F0A0 + 71	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 18C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 239	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 29E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 3E0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 4AE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 515	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 714	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 7DF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 7F7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + 9DA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436F310 + B8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14436FE80 - 2C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144370350 + A3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144370E80 + 1BA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144370E80 + 5D9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144370E80 + D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144371830 + 138	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144371830 + D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144372A10 + 117	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144372A10 + 1EE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144372A10 + 45	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144372A10 + 8B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144378200 + 5A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144378200 + E5C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437A7F0 - 2F8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437CF80 + 115	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437CF80 + 1B8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437CF80 + 2C9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437CF80 + 38F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437CF80 + 4A5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437CF80 + 527	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437CF80 + 5CB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437CF80 + 703	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437CF80 + 79	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437D7A0 + 52D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437D7A0 + 62	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437D7A0 + 693	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437DEB0 + 32D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437DEB0 + 409	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437DEB0 + 445	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437DEB0 + 61	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437DEB0 + F0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437F7C0 + 107	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437F7C0 + 1AC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437F7C0 + 26E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437F7C0 + 49A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437F7C0 + 61	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437FCA0 + 24C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437FCA0 + 4E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14437FCA0 + D5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443952B0 + 4FF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144395AB0 + 82	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14439C0A0 + 2C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14439C990 + 1EF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14439C990 + 2E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14439C990 + 74	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14439CBD0 + 173	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14439CBD0 + 88	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14439FFF0 + 3A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443A3D70 + D7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443AA980 + 17	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443AAF60 + 5B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443AAF60 + 8A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1443AAF60 + CC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444B7680 + 13E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444BC850 + 37	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444BC850 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444BD7C0 + 21B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444BD7C0 + 2C7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444BD7C0 + 327	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444BD7C0 + 362	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444C9CB0 + 192	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444C9CB0 + 32	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444CA300 + 2A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444CA300 + 327	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444CA6E0 + 29	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444CA6E0 + 47F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D2E90 + 103	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D2E90 + 273	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D3530 + 1FF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D3530 + 886	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D3530 + BCA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D3530 + CDB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D3530 - 17B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D3530 - 220	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D42B0 + 120	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D42B0 + AC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D4C50 + 45	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D4F10 + 34	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D78C0 + 144	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D78C0 + 1AC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D78C0 + 1F0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444D78C0 + ED	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444E3530 + 5B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444E38E0 + 158	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444E43B0 + 2ED	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444E43B0 + 3D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1444E43B0 + 6D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144556EF0 + 50	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144556EF0 + 578	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14457E250 + A95	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14457E250 + F1B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144586990 + 22	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144586990 + 2A8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144586D80 + 936	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144586D80 + 977	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1445DF430 + A6A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1445E0B20 + 3B5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1445E0B20 + E8A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1445E0B20 + EF7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1445E5CB0 + 896	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1445E8700 + 441	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1445E8700 + 4D7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144603A60 + DAE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144603A60 + E45	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144696500 + 197	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144696500 + 1BE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144696500 + 8D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1446C9700 + 2AD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1446CDC80 + 4C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1446EB6C0 + 9B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144703420 + 3C1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144704E70 + 1C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144705970 + D9C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14483D340 + 83	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14483D4A0 + A3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144877790 + 1CB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144877790 + 28A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144877790 + E9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144877790 + F7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144878590 + 10E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144878590 + 118	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144878590 + 171	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144878590 + 1A4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144878590 + 1C8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144878590 + 1D2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144878590 + 221	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144878590 + 250	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14489CEC0 + 65	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14489D2C0 + 3F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1448BEF40 + 53	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1448DDD00 + 1AA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1448DDD00 + 98	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1448DE570 + 209	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1448DE570 + 26C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1448DE570 + 393	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1448DF050 + 104	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1448DF050 + 178	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144909CB0 + 277	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144918920 + 3E8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144918920 + 43A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144EB2F30 + 50F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144EB2F30 + 57C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144EB2F30 + 5A9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144EB2F30 + 60A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144EB2F30 + 615	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144EB8370 + 2D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144EB8370 + 38	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144EBEAB0 + 1D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_144EBEAB0 + 73	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1454A8070 + 33C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1454A8070 + 45	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1454A8070 + 75	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14557E8C0 + 36	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1455821F0 + 641	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1455821F0 + 6E7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145585E00 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145588770 + 2DC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145589610 + 181	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14558AF70 + 71	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14558AF70 + 94	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14558AF70 + D7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14558F270 + 77	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145687380 + 3E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145688840 + 26D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145688840 : loc_145688ADB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14568B9A0 + 57	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458019A0 + 4F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458019A0 + A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145803500 + 1B8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145803500 + BA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145819360 + 114	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145819360 + 1A8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145819360 + 29	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458196D0 + 3816	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458196D0 + 3993	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458196D0 + 71	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145888800 + 1CB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145888800 + 21E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145888800 + 4C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458A07F0 + 93	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458A2C50 + 44	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458A2C50 + 802	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458A6730 + 97	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458A8580 + 486	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458A8580 + 589	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458A8580 + 6A2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458A8580 + 7FE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458A8580 + A4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458E7F30 + 3BB4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1458E7F30 + 4A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145992A60 + D8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145992B70 + 9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145B15480 + 134	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145B15480 + 2C97	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145B15480 + 2CCE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145B15480 + 2E35	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145B19E80 + 9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145B98E90 + 1A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145BBE950 + 2D6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CA4240 + 17	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CA5DC0 + 66	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CC9CE0 + 4AE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CC9CE0 + 880	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CD18F0 + 16E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CD3360 + 104	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CD3C30 + B3F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CDACE0 + 22	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CDACE0 + 80	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CE5A20 + F1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CEE960 + 4C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CEE960 + 7A4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CEE960 + A98	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CEF7F0 + 1304	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CEF7F0 + 1379	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CEF7F0 + 1483	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CEF7F0 + 1A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CEF7F0 + 58B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CEF7F0 + 65B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CF1C20 + 76	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CF1C20 + B2C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CF2BB0 + 25	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CF5340 + 2D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CF5340 + 464	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CFCC20 + 20E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CFCC20 + 256	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CFCC20 + 3E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145CFCC20 + 472	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D0A870 + 5B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D0A870 + A2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D7EC10 + 1DB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D7EC10 + AD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D8A8D0 + 12D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D8A8D0 + 17E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D90E80 + 1351	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D90E80 + 1411	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D94420 + 292	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D94420 + 3CF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D9AAE0 + 5F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D9AAE0 + E3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145D9B340 + 386	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DB86C0 + 1D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DC83C0 + 1C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DC83C0 + 4AA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DC9EA0 + 2AC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DC9EA0 + 35F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DC9EA0 + 491	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DCA3D0 + 138	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DCBBC0 + 3C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DCCA70 + 12F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145DCCA70 + 24D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E11070 + 10	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E11070 + 59	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E11070 + C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E18930 + 100	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E18930 + AF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E18AD0 + F2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E20110 + 8A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E21BE0 + 120	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E21BE0 + 3F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E21BE0 + D8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E220D0 + 200	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E82080 + 31	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E86A90 + 2C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E9B2A0 + 32	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E9B320 + 31	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E9B4C0 + 29	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145E9F830 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145EA50A0 + 4FA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145EB7C20 + 295	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145EBCA80 + 102	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145EBCA80 + 2D4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145EBCE10 + 13D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145EBCE10 + C2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145ECA890 + 249	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145ECE3B0 + BA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145F8D640 + 191	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145FB9220 + 2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145FB9220 + 39	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145FDA460 + 12A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145FDA460 + B5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145FE4690 + A5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_145FFE7C0 + 3D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1460037A0 + 75	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1460288F0 + 181	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1460288F0 + 27	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14604D550 + 4FB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14615BEB0 + 365	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14615BEB0 + 37F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1461BC070 + 25D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1461BC070 + 31C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1461BC070 + E6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1461EB020 + 14	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14620DFE0 + 4D6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14620DFE0 + 4E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14621DCB0 + 2D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14621DCB0 + 339	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14621DCB0 + 374	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14621DCB0 + D9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146247C70 + 15	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14625A680 + 237	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14625A680 + 28	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14625CE00 + 1EE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1462803E0 + BE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1462B3F00 + 7C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1462B3F00 + B4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1462B7240 + 39	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1462CBE90 + 1D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146358E40 + 18E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146358E40 + 1BE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146358E40 + 1FD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146358E40 + 224	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146358E40 + 4D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14635B7A0 + 481	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14635B7A0 + E43	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14635B7A0 + EFC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14635B7A0 + F41	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146379F10 + 1D6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146379F10 + D0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14639E180 + 3A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14639E180 + 6C1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1463D4680 + 265	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1463D4680 + 47B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146419870 + 76E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146491470 + E5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1464ACCC0 + 2CF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1464D4D50 + 16B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1464D4D50 + 88	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1464D4D50 + C7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1465757E0 + 1C0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1465ED880 + 1AA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1465ED880 + 38	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1465F43F0 + 19	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146646F20 + 249	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146646F20 + 2BD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146646F20 + 590	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146646F20 + C0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146695430 + 23D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14669B560 + 692	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14669B560 + 834	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14669B560 + 859	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14669B560 + B6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1466F07B0 + 34	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1466F07B0 + C4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1466F81A0 + 5A7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1466F81A0 + 69	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146729B20 + 1E8	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146729B20 + C5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14675C380 + 6A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146771D40 + F0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146789220 + 9D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467D57D0 + 126	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467D57D0 + 1D7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467D57D0 : loc_1467D5820	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467E12F0 + CC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467E1630 + 1AF	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467E1630 + 2F1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467E1630 + D9	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467E2A20 + 32	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467EE820 + 1E0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1467EE820 + 26C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146817790 + 129	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146817790 + 178	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146817790 + 6B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146817790 + C1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14681BB90 + 2C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14681BB90 + BC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14686EB30 + 1A6	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14686EB30 + 1EE	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146874760 + 27	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146874760 + 49	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146887A30 + 2C7	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146889D20 + 3A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14688E180 + 41F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14688E180 + 4CD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146895760 + 195	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14689ED60 + 358	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14689ED60 + 4B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14689F870 + 28	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14689F870 + 35C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A4030 + 155	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A4030 + 3CA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A4030 + 3D4	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A4030 + 41D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A4030 + 44D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A4030 + 473	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A4030 + 4CD	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A4030 + 517	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A4030 + 87C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468A5540 + DB	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1468F9ED0 + 3E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146901B70 + 28E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146901B70 + 5F	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14690D570 + 5D	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14690D860 + 941	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14690D860 + 9A0	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14690EDB0 + 22	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146918190 + FA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14691D970 + 108	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14691D970 + 5A1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14691EE60 + 8A	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146924280 + 36B	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146924280 + 51	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_14692C5B0 + 106	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146B9CE20 + 270	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146B9D420 + 3A2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146B9D420 + 685	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146C06D20 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146DC94E0 + 432	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146DC94E0 + BC	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146DE0050 + 21E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146E0D3D0 + 19C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146E0D3D0 + 4D5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146E0D3D0 + 7F5	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146E0D3D0 + B2C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146E92870 + F1	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146E935E0 + 58	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146E935E0 + E2	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146E94450 + 1482	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146E96E60 + 7	jmp     cs : qword_14791FF68; Indirect Near Jump
+                        Down	r	sub_146EB5E10 + 9C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146ED0130 + 102	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146ED0780 + 117	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146F43DA0 + 175	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146F45330 + 25	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146F50FF0 + AA	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146F512D0 + 71	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146F61E20 + 10F3	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_146F61E20 + 58	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1470BA2C0 + 3C	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_1473C79F0 + E	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                        Down	r	sub_147669FC0 + 22	call    cs : qword_14791FF68; Indirect Call Near Procedure
+                    ]
 #pragma endregion
 
 
@@ -295,6 +1243,860 @@ void* sub_1442F3CF0()
             goto LABEL_7;
         return 0;
     }
+#pragma endregion
+
+#pragma region sub_low
+            unsigned __int64 __fastcall sub_1442F3CB0(unsigned __int16* a1, __int64 a2)
+            {
+                unsigned __int64 result; // rax
+
+                sub_1442EF440();
+                result = (unsigned __int64)*a1 >> 6;
+                *(_WORD*)(a2 + 2 * result) = 0;
+                return result;
+            }// attributes: thunk
+            void* sub_1442F3CE0()
+            {
+                return sub_14416C7B0();
+            }
+            __int64 __fastcall sub_1442EF440(_BYTE* a1, __int64 a2)
+            {
+                unsigned __int64 v3; // r8
+                _BYTE* v4; // rdx
+                __int64 result; // rax
+                __int64 v7; // rdx
+                __int64 v8; // r8
+                __int16 v9; // cx
+                bool v10; // zf
+
+                v3 = (unsigned __int64)*(unsigned __int16*)a1 >> 6;
+                v4 = a1 + 2;
+                if ((*a1 & 1) != 0)
+                {
+                    sub_14766AF37(a2, v4, 2 * v3);
+                    return qword_14A434108(a2, 2 * (*(unsigned __int16*)a1 >> 6));
+                }
+                else
+                {
+                    sub_14766AF37(a2, v4, v3);
+                    qword_14A434108(a2, *(unsigned __int16*)a1 >> 6);
+                    result = *(unsigned __int16*)a1 >> 6;
+                    if ((_DWORD)result)
+                    {
+                        v7 = result + a2;
+                        v8 = a2 + 2 * result;
+                        do
+                        {
+                            v9 = *(char*)--v7;
+                            *(_WORD*)(v8 - 2) = v9;
+                            v8 -= 2LL;
+                            v10 = (_DWORD)result == 1;
+                            result = (unsigned int)(result - 1);
+                        } while (!v10);
+                    }
+                }
+                return result;
+            }
+
+            .data:000000014A8EA840 ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? qword_14A8EA840 dq ? ; DATA XREF : sub_1442FD840 + BB↑w
+            [Direction	Type	Address	Text
+                Up	w	sub_1442FD840 + BB	mov     cs : qword_14A8EA840, rax
+                .text : 00000001442FD8FB 48 89 05 3E CF 5E 06                          mov     cs : qword_14A8EA840, rax
+                ((void(__fastcall*)(void*))sub_144309440)(v4);
+            [
+                // positive sp value has been detected, the output may be wrong!
+                __int64 __fastcall sub_1442FD840()
+                {
+                    __int64 v0; // rbx
+                    __int64 v1; // rdi
+                    __int64 v2; // rax
+                    __int64 v3; // rax
+                    void* v4; // rax
+                    __int64 v5; // rax
+                    __int64 v6; // rdx
+                    volatile signed __int32* v7; // rbx
+                    char v8; // bl
+                    __int64 v9; // rax
+                    __int64 v10; // rax
+                    unsigned int v11; // ebx
+                    __int64 v12; // rax
+                    __int64 v13; // rax
+                    __int64 v14; // rbx
+                    __int64 v15; // rdi
+                    unsigned int v16; // ebx
+                    __int64 v17; // rax
+                    __int64 result; // rax
+                    __int64 v19; // rax
+                    __int64 v20; // [rsp+28h] [rbp-50h] BYREF
+                    int v21; // [rsp+30h] [rbp-48h] BYREF
+                    int v22; // [rsp+38h] [rbp-40h] BYREF
+                    __int64 v23; // [rsp+48h] [rbp-30h] BYREF
+                    volatile signed __int32* v24; // [rsp+50h] [rbp-28h]
+                    __int64 v25; // [rsp+68h] [rbp-10h]
+                    void* retaddr; // [rsp+78h] [rbp+0h] BYREF
+                    char v27; // [rsp+80h] [rbp+8h] BYREF
+                    __int64 v28; // [rsp+88h] [rbp+10h]
+
+                    v28 = v0;
+                    nullsub_1();
+                    v2 = ((__int64(__fastcall*)(int*))sub_1442A21B0)(&v22);
+                    ((void(__fastcall*)(__int64*, __int64, _QWORD))sub_140B5CD80)(
+                        &v20,
+                        v2,
+                        0x29 - (unsigned int)(*(_DWORD*)(v2 + 8) != 0));
+                    ((void(__fastcall*)(__int64*, const wchar_t*, __int64))sub_1441520A0)(
+                        &v20,
+                        L"Binaries/ThirdParty/DbgHelp/dbghelp.dll",
+                        0x27LL);
+                    qword_14A426370(&v22);
+                    sub_140B5A380(&v22, 0LL);
+                    if (qword_14A426370(&v22))
+                    {
+                        v3 = qword_14A426370(&v22);
+                        sub_1441AFDF0(v3);
+                    }
+                    if (v21)
+                        v4 = (void*)qword_14A426370(&v20);
+                    else
+                        v4 = &unk_1479D0BD8;
+                    v25 = v1;
+                    ((void(__fastcall*)(void*))sub_144309440)(v4);
+                    qword_14A8EA840 = ((__int64(__fastcall*)(__int64(__fastcall*)()))sub_14766AF9D)(sub_1442FDBC0);
+                    if ((int)MEMORY[0x32AB3054](0LL) < 0x280 || (int)MEMORY[0x32AB3054](1LL) < 0x1E0)
+                    {
+                        v5 = ((__int64(__fastcall*)(__int64*, const wchar_t*, const wchar_t*, const wchar_t*))sub_1441AF230)(
+                            &v23,
+                            L"The current resolution is too low to run this game.",
+                            L"Launch",
+                            L"Error_ResolutionTooLow");
+                        ((void(__fastcall*)(_QWORD, __int64, _QWORD))sub_1442B4110)(0LL, v5, 0LL);
+                        v7 = v24;
+                        if (v24)
+                        {
+                            if (_InterlockedExchangeAdd(v24 + 2, 0xFFFFFFFF) == 1)
+                            {
+                                (**(void(__fastcall***)(volatile signed __int32*))v7)(v7);
+                                if (_InterlockedExchangeAdd(v7 + 3, 0xFFFFFFFF) == 1)
+                                    (*(void(__fastcall**)(volatile signed __int32*, __int64))(*(_QWORD*)v7 + 8LL))(v7, 1LL);
+                            }
+                        }
+                        v8 = 0;
+                        LOBYTE(retaddr) = 0;
+                        if ((unsigned __int8)byte_14A425310 >= 5u && (unsigned __int8)byte_14A8DE2B8 >= 5u)
+                        {
+                            sub_1442E6110(
+                                &v27,
+                                &byte_14A8DE2B8,
+                                L"FPlatformMisc::RequestExit(%i)",
+                                "FWindowsPlatformMisc::RequestExit",
+                                &retaddr);
+                            v8 = (char)retaddr;
+                        }
+                        ((void(__fastcall*)(const wchar_t*, __int64))sub_144287BF0)(L"Win RequestExit", v6);
+                        ((void(__fastcall*)(void*))sub_140B68060)(&unk_14A42AD30);
+                        if (v8)
+                        {
+                            if (sub_1442AA870())
+                            {
+                                v9 = sub_1442AA870();
+                                (*(void(__fastcall**)(__int64))(*(_QWORD*)v9 + 0x68LL))(v9);
+                                v10 = sub_1442AA870();
+                                (*(void(__fastcall**)(__int64))(*(_QWORD*)v10 + 0x20LL))(v10);
+                            }
+                            v11 = byte_14A8DDCAB != 0 ? 3 : 0;
+                            v12 = MEMORY[0x32A93DE1]();
+                            MEMORY[0x7FFA20D397C0](v12, v11);
+                        }
+                        else
+                        {
+                            MEMORY[0x32AAFEA3](0LL);
+                        }
+                    }
+                    v13 = MEMORY[0x32A9B231](0LL, 0x3F2LL, 0xALL);
+                    v14 = v13;
+                    if (v13)
+                    {
+                        v15 = MEMORY[0x32A9ACA1](0LL, v13);
+                        if (v15)
+                        {
+                            v16 = MEMORY[0x32A9B031](0LL, v14);
+                            v17 = MEMORY[0x32A9AF21](v15);
+                            if (v16 > 1 && v17)
+                                ((void(__fastcall*)(__int64, _QWORD, _QWORD))sub_1442AD6B0)(v17, v16, 0LL);
+                        }
+                        else
+                        {
+                            ((void (*)(void))sub_1442BF3C0)();
+                        }
+                    }
+                    qword_14A426370(&v21);
+                    sub_140B5A380(&v21, 0LL);
+                    result = qword_14A426370(&v21);
+                    if (result)
+                    {
+                        v19 = qword_14A426370(&v21);
+                        return sub_1441AFDF0(v19);
+                    }
+                    return result;
+                }
+            ]
+                Up	r	sub_1442FDBC0 + D	mov     rax, cs : qword_14A8EA840
+            ]
+
+            .data:000000014A48E0E0 00 00 00 00 00 00 00 00       qword_14A48E0E0 dq 0; DATA XREF : sub_140D0F7D0 + 9↑r
+            .data : 000000014A48E0E0; sub_140DA3540 + 22↑r ...
+            .data:000000014A48E0E8 00 00 00 00 00 00 00 00       qword_14A48E0E8 dq 0; DATA XREF : .text : 0000000140B5AA21↑r
+            .data : 000000014A48E0E8;.text:0000000140B5AB63↑r ...
+            .
+            __int64 __fastcall sub_141D6A070(_QWORD* a1, __int64 a2)
+            {
+                int v4; // esi
+                _QWORD* v5; // rax
+                __int64 v6; // rax
+                __int64 v7; // rax
+                __int64 v8; // rax
+                __int64 v9; // rbx
+                int v10; // eax
+                __int64 v11; // rax
+                __int64* v12; // rbx
+                __int64 v13; // rax
+                __int64 v14; // rax
+                __int64 v15; // rax
+                __int64 v16; // rbx
+                __int64 v17; // rax
+                __int64 v18; // rdi
+                _DWORD* v19; // r14
+                _DWORD* v20; // rbx
+                bool v21; // zf
+                __int64 v22; // rbx
+                __int64 v23; // rax
+                __int64 v24; // rax
+                __int64 v25; // rbx
+                __int64 v26; // rax
+                unsigned int v27; // ebx
+                _QWORD* v28; // rdi
+                __int64 v29; // rax
+                __int64 v30; // rcx
+                __int64 v31; // rax
+                _QWORD* v32; // rdi
+                __int64 v33; // rax
+                __int64* v34; // rax
+                _DWORD* v35; // r15
+                __int64 v36; // rdi
+                __int64 v37; // rax
+                __int64 v38; // rax
+                __int64 v39; // rax
+                __int64 v40; // rax
+                int v41; // eax
+                __int64 v42; // rax
+                __int64 v43; // rax
+                int v44; // ebx
+                void* v45; // rax
+                bool v46; // bl
+                __int64 v47; // rax
+                __int64 v48; // rax
+                __int64 v49; // rax
+                int v50; // ebx
+                void* v51; // rax
+                bool v52; // bl
+                __int64 v53; // rax
+                __int64 v54; // rax
+                __int64 v55; // rax
+                __int64 v56; // rbx
+                __int64 v57; // rax
+                unsigned int v58; // ebx
+                _QWORD* v59; // rdi
+                __int64 v60; // rax
+                __int64 v61; // rcx
+                __int64 v62; // rax
+                int v63; // eax
+                int v64; // r12d
+                __int64 v65; // r13
+                __int64 v66; // r15
+                __int64 v67; // rbx
+                __int64 v68; // rax
+                __int64 v69; // rax
+                __int64* v70; // r14
+                void* v71; // rsi
+                __int64 v72; // rdi
+                __int64 v73; // rbx
+                __int64 v74; // rax
+                void* v75; // rax
+                void* v76; // rax
+                __int64 v77; // rax
+                __int64 v78; // rbx
+                __int64 v79; // rdi
+                __int64 v80; // rax
+                __int64 v81; // rax
+                __int64 v82; // rax
+                __int64 v83; // rax
+                __int64 v84; // rax
+                __int64 v85; // rax
+                __int64 v86; // rax
+                _DWORD* v87; // rbx
+                __int64 result; // rax
+                __int64 v89; // rax
+                __int64 v90; // [rsp+30h] [rbp-D0h] BYREF
+                __int64 v91; // [rsp+38h] [rbp-C8h]
+                char v92[8]; // [rsp+40h] [rbp-C0h] BYREF
+                int v93; // [rsp+48h] [rbp-B8h]
+                char v94[8]; // [rsp+50h] [rbp-B0h] BYREF
+                int v95; // [rsp+58h] [rbp-A8h]
+                __int64 v96; // [rsp+60h] [rbp-A0h] BYREF
+                __int64 v97; // [rsp+68h] [rbp-98h]
+                __int64 v98; // [rsp+70h] [rbp-90h] BYREF
+                __int64 v99; // [rsp+78h] [rbp-88h]
+                __int64 v100; // [rsp+80h] [rbp-80h] BYREF
+                __int64 v101; // [rsp+88h] [rbp-78h]
+                __int64 v102; // [rsp+90h] [rbp-70h] BYREF
+                __int64 v103; // [rsp+98h] [rbp-68h]
+                __int64 v104; // [rsp+A0h] [rbp-60h] BYREF
+                __int64 v105; // [rsp+A8h] [rbp-58h]
+                __int64 v106; // [rsp+B0h] [rbp-50h] BYREF
+                __int64 v107; // [rsp+B8h] [rbp-48h]
+                __int64 v108; // [rsp+C0h] [rbp-40h] BYREF
+                _DWORD* v109; // [rsp+C8h] [rbp-38h]
+                char v110[8]; // [rsp+D0h] [rbp-30h] BYREF
+                int v111; // [rsp+D8h] [rbp-28h]
+                char v112[8]; // [rsp+E0h] [rbp-20h] BYREF
+                int v113; // [rsp+E8h] [rbp-18h]
+                __int64 v114; // [rsp+F0h] [rbp-10h] BYREF
+                int v115; // [rsp+F8h] [rbp-8h]
+                int v116; // [rsp+FCh] [rbp-4h]
+                _QWORD* v117; // [rsp+100h] [rbp+0h] BYREF
+                __int64 v118; // [rsp+108h] [rbp+8h] BYREF
+                int v119; // [rsp+110h] [rbp+10h]
+                int v120; // [rsp+114h] [rbp+14h]
+                __int64 v121; // [rsp+118h] [rbp+18h] BYREF
+                unsigned int v122; // [rsp+120h] [rbp+20h]
+                int v123; // [rsp+124h] [rbp+24h]
+                __int64 v124; // [rsp+128h] [rbp+28h]
+                char v125[16]; // [rsp+130h] [rbp+30h] BYREF
+                char v126[16]; // [rsp+140h] [rbp+40h] BYREF
+                void* v127; // [rsp+150h] [rbp+50h] BYREF
+                _DWORD* v128; // [rsp+158h] [rbp+58h]
+                _QWORD* v129; // [rsp+160h] [rbp+60h]
+                _DWORD* v130; // [rsp+168h] [rbp+68h]
+                __int128 v131; // [rsp+170h] [rbp+70h] BYREF
+                _QWORD* v132; // [rsp+1C0h] [rbp+C0h] BYREF
+                __int64 v133; // [rsp+1D0h] [rbp+D0h] BYREF
+                int v134; // [rsp+1D8h] [rbp+D8h]
+
+                v132 = a1;
+                v4 = 0;
+                v134 = 0;
+                if ((unsigned __int8)byte_14A425310 >= 4u && (unsigned __int8)byte_14A70C920 >= 4u)
+                {
+                    if (*(_DWORD*)(a2 + 8))
+                        v5 = (_QWORD*)qword_14A426370(a2);
+                    else
+                        v5 = &unk_1479D0BD8;
+                    v117 = v5;
+                    sub_141D3C870(&v133, &byte_14A70C920, &unk_148233410, &unk_1482333D0, &v117);
+                }
+                v6 = *a1;
+                v96 = 0LL;
+                v97 = 0LL;
+                v7 = (*(__int64(__fastcall**)(_QWORD*))(v6 + 0x168))(a1);
+                v8 = sub_141D5BC60(v7);
+                v9 = v8;
+                if (!v8
+                    || ((v10 = *(_DWORD*)(v8 + 0xC), v10 >= (int)qword_14A904FCC)
+                        ? (v11 = 0LL)
+                        : (v11 = *(_QWORD*)(qword_14A904FB8 + 8LL * (v10 / 0x10000)) + 0x18LL * (v10 % 0x10000)),
+                        (*(_DWORD*)(v11 + 8) & 0x20000000) != 0))
+                {
+                    if ((unsigned __int8)byte_14A425310 >= 4u && (unsigned __int8)byte_14A70C920 >= 4u)
+                        sub_141D3DD20(&v133, &byte_14A70C920, &unk_148233470, &unk_1482333D0);
+                }
+                else if (sub_141118600(v9))
+                {
+                    v12 = (__int64*)sub_141DDFA60(v9, &v114);
+                    if (&v96 != v12)
+                    {
+                        qword_14A426370(&v96);
+                        if (qword_14A426370(&v96))
+                        {
+                            v13 = qword_14A426370(&v96);
+                            sub_1441AFDF0(v13);
+                        }
+                        v96 = *v12;
+                        qword_14A426370(&v96);
+                        *v12 = 0LL;
+                        qword_14A426370(v12);
+                        v97 = v12[1];
+                        v12[1] = 0LL;
+                    }
+                    qword_14A426370(&v114);
+                    sub_140B5A380(&v114, 0LL);
+                    if (qword_14A426370(&v114))
+                    {
+                        v14 = qword_14A426370(&v114);
+                        sub_1441AFDF0(v14);
+                    }
+                }
+                if ((int)v97 <= 1 && (unsigned __int8)byte_14A425310 >= 2u && (unsigned __int8)byte_14A70C920 >= 2u)
+                    ((void(__fastcall*)(__int64*, char*, void*, void*))loc_141D3B840)(
+                        &v133,
+                        &byte_14A70C920,
+                        &unk_1482334E0,
+                        &unk_1482333D0);
+                v131 = 0LL;
+                v15 = sub_144020460(0x88LL);
+                if (v15)
+                    v16 = sub_141930820(v15, a2);
+                else
+                    v16 = 0LL;
+                v17 = sub_144020460(0x18LL);
+                if (v17)
+                {
+                    *(_DWORD*)(v17 + 8) = 1;
+                    *(_QWORD*)v17 = &unk_1479D4CB0;
+                    *(_DWORD*)(v17 + 0xC) = 1;
+                    *(_QWORD*)(v17 + 0x10) = v16;
+                }
+                else
+                {
+                    v17 = 0LL;
+                }
+                v108 = v16;
+                v109 = (_DWORD*)v17;
+                sub_140B6AA10(&v108, v16, v16);
+                v18 = v108;
+                v19 = v109;
+                v130 = v109;
+                if (v109)
+                {
+                    ++v109[2];
+                    v20 = v109;
+                    if (v109)
+                    {
+                        v21 = v109[2]-- == 1;
+                        if (v21)
+                        {
+                            (**(void(__fastcall***)(_DWORD*))v20)(v20);
+                            v21 = v20[3]-- == 1;
+                            if (v21)
+                                (*(void(__fastcall**)(_DWORD*, __int64))(*(_QWORD*)v20 + 8LL))(v20, 1LL);
+                        }
+                    }
+                }
+                if ((unsigned __int8)sub_14192EC30(v18, &v131, 0LL) && (v22 = v131) != 0)
+                {
+                    v90 = 0LL;
+                    v91 = 0LL;
+                    sub_140B5A480(&v90, 0xELL);
+                    LODWORD(v91) = v91 + 0xE;
+                    if ((int)v91 > SHIDWORD(v91))
+                        sub_140B5A3A0(&v90);
+                    v23 = qword_14A426370(&v90);
+                    sub_14416FA80(v23, &unk_148233540, 0x1CLL);
+                    v24 = sub_1443108C0(v22, &v90);
+                    v121 = 0LL;
+                    v25 = v24;
+                    v26 = qword_14A426370(v24);
+                    v27 = *(_DWORD*)(v25 + 8);
+                    v28 = (_QWORD*)v26;
+                    v122 = v27;
+                    if (v27)
+                    {
+                        sub_140B77C70(&v121, v27, 0LL);
+                        v29 = qword_14A426370(&v121) - (_QWORD)v28;
+                        do
+                        {
+                            *(_QWORD*)((char*)v28 + v29) = *v28;
+                            v30 = v28[1];
+                            *(_QWORD*)((char*)v28 + v29 + 8) = v30;
+                            if (v30)
+                                ++*(_DWORD*)(v30 + 8);
+                            v28 += 2;
+                            --v27;
+                        } while (v27);
+                    }
+                    else
+                    {
+                        v123 = 0;
+                    }
+                    qword_14A426370(&v90);
+                    sub_140B5A380(&v90, 0LL);
+                    if (qword_14A426370(&v90))
+                    {
+                        v31 = qword_14A426370(&v90);
+                        sub_1441AFDF0(v31);
+                    }
+                    v117 = (_QWORD*)qword_14A426370(&v121);
+                    v32 = v117;
+                    v33 = qword_14A426370(&v121);
+                    v129 = (_QWORD*)(v33 + 0x10LL * (int)v122);
+                    if (v32 != v129)
+                    {
+                        do
+                        {
+                            v34 = (__int64*)(**(__int64(__fastcall***)(_QWORD)) * v32)(*v32);
+                            v35 = (_DWORD*)v34[1];
+                            v36 = *v34;
+                            v128 = v35;
+                            if (v35)
+                                ++v35[2];
+                            v98 = 0LL;
+                            v99 = 0LL;
+                            sub_140B5A480(&v98, 0xBLL);
+                            LODWORD(v99) = v99 + 0xB;
+                            if ((int)v99 > SHIDWORD(v99))
+                                sub_140B5A3A0(&v98);
+                            v37 = qword_14A426370(&v98);
+                            sub_14416FA80(v37, &unk_148233560, 0x16LL);
+                            sub_144310A40(v36, v92, &v98);
+                            qword_14A426370(&v98);
+                            sub_140B5A380(&v98, 0LL);
+                            if (qword_14A426370(&v98))
+                            {
+                                v38 = qword_14A426370(&v98);
+                                sub_1441AFDF0(v38);
+                            }
+                            if (v93 <= 1 || (unsigned __int8)sub_1441473D0(&v96, v92, 1LL))
+                            {
+                                v100 = 0LL;
+                                v101 = 0LL;
+                                sub_140B5A480(&v100, 4LL);
+                                LODWORD(v101) = v101 + 4;
+                                if ((int)v101 > SHIDWORD(v101))
+                                    sub_140B5A3A0(&v100);
+                                v39 = qword_14A426370(&v100);
+                                sub_14416FA80(v39, &unk_148233578, 8LL);
+                                sub_144310A40(v36, v94, &v100);
+                                qword_14A426370(&v100);
+                                sub_140B5A380(&v100, 0LL);
+                                if (qword_14A426370(&v100))
+                                {
+                                    v40 = qword_14A426370(&v100);
+                                    sub_1441AFDF0(v40);
+                                }
+                                if (v95 <= 1
+                                    || (v41 = qword_14A426370(v94),
+                                        (unsigned int)sub_144147CD0((unsigned int)&unk_14AA41578, v41, 1, 0, 0xFFFFFFFF) != 0xFFFFFFFF))
+                                {
+                                    v102 = 0LL;
+                                    v103 = 0LL;
+                                    sub_140B5A480(&v102, 4LL);
+                                    LODWORD(v103) = v103 + 4;
+                                    if ((int)v103 > SHIDWORD(v103))
+                                        sub_140B5A3A0(&v102);
+                                    v42 = qword_14A426370(&v102);
+                                    sub_14416FA80(v42, &unk_148233580, 8LL);
+                                    sub_144310A40(v36, &v90, &v102);
+                                    qword_14A426370(&v102);
+                                    sub_140B5A380(&v102, 0LL);
+                                    if (qword_14A426370(&v102))
+                                    {
+                                        v43 = qword_14A426370(&v102);
+                                        sub_1441AFDF0(v43);
+                                    }
+                                    v46 = 0;
+                                    if ((int)v91 > 1)
+                                    {
+                                        v4 |= 1u;
+                                        v134 = v4;
+                                        v44 = sub_1442F0C00(v125);
+                                        if ((_DWORD)v91)
+                                            LODWORD(v45) = qword_14A426370(&v90);
+                                        else
+                                            v45 = &unk_1479D0BD8;
+                                        if ((unsigned int)sub_144147CD0(v44, (_DWORD)v45, 1, 0, 0xFFFFFFFF) == 0xFFFFFFFF)
+                                            v46 = 1;
+                                    }
+                                    if ((v4 & 1) != 0)
+                                    {
+                                        v4 &= ~1u;
+                                        v134 = v4;
+                                        qword_14A426370(v125);
+                                        sub_140B5A380(v125, 0LL);
+                                        if (qword_14A426370(v125))
+                                        {
+                                            v47 = qword_14A426370(v125);
+                                            sub_1441AFDF0(v47);
+                                        }
+                                    }
+                                    if (!v46)
+                                    {
+                                        v104 = 0LL;
+                                        v105 = 0LL;
+                                        sub_140B5A480(&v104, 3LL);
+                                        LODWORD(v105) = v105 + 3;
+                                        if ((int)v105 > SHIDWORD(v105))
+                                            sub_140B5A3A0(&v104);
+                                        v48 = qword_14A426370(&v104);
+                                        sub_14416FA80(v48, &unk_148233588, 6LL);
+                                        sub_144310A40(v36, v110, &v104);
+                                        qword_14A426370(&v104);
+                                        sub_140B5A380(&v104, 0LL);
+                                        if (qword_14A426370(&v104))
+                                        {
+                                            v49 = qword_14A426370(&v104);
+                                            sub_1441AFDF0(v49);
+                                        }
+                                        v52 = 0;
+                                        if (v111 > 1)
+                                        {
+                                            v4 |= 2u;
+                                            v134 = v4;
+                                            v50 = ((__int64(__fastcall*)(char*))unk_1442F3D60)(v126);
+                                            if (v111)
+                                                LODWORD(v51) = qword_14A426370(v110);
+                                            else
+                                                v51 = &unk_1479D0BD8;
+                                            if ((unsigned int)sub_144147CD0(v50, (_DWORD)v51, 1, 0, 0xFFFFFFFF) == 0xFFFFFFFF)
+                                                v52 = 1;
+                                        }
+                                        if ((v4 & 2) != 0)
+                                        {
+                                            v4 &= ~2u;
+                                            v134 = v4;
+                                            qword_14A426370(v126);
+                                            sub_140B5A380(v126, 0LL);
+                                            if (qword_14A426370(v126))
+                                            {
+                                                v53 = qword_14A426370(v126);
+                                                sub_1441AFDF0(v53);
+                                            }
+                                        }
+                                        if (!v52)
+                                        {
+                                            v106 = 0LL;
+                                            v107 = 0LL;
+                                            sub_140B5A480(&v106, 5LL);
+                                            LODWORD(v107) = v107 + 5;
+                                            if ((int)v107 > SHIDWORD(v107))
+                                                sub_140B5A3A0(&v106);
+                                            v54 = qword_14A426370(&v106);
+                                            sub_14416FA80(v54, &unk_148233590, 0xALL);
+                                            v55 = sub_1443108C0(v36, &v106);
+                                            v118 = 0LL;
+                                            v56 = v55;
+                                            v57 = qword_14A426370(v55);
+                                            v58 = *(_DWORD*)(v56 + 8);
+                                            v59 = (_QWORD*)v57;
+                                            v119 = v58;
+                                            if (v58)
+                                            {
+                                                sub_140B77C70(&v118, v58, 0LL);
+                                                v60 = qword_14A426370(&v118) - (_QWORD)v59;
+                                                do
+                                                {
+                                                    *(_QWORD*)((char*)v59 + v60) = *v59;
+                                                    v61 = v59[1];
+                                                    *(_QWORD*)((char*)v59 + v60 + 8) = v61;
+                                                    if (v61)
+                                                        ++*(_DWORD*)(v61 + 8);
+                                                    v59 += 2;
+                                                    --v58;
+                                                } while (v58);
+                                            }
+                                            else
+                                            {
+                                                v120 = 0;
+                                            }
+                                            qword_14A426370(&v106);
+                                            sub_140B5A380(&v106, 0LL);
+                                            if (qword_14A426370(&v106))
+                                            {
+                                                v62 = qword_14A426370(&v106);
+                                                sub_1441AFDF0(v62);
+                                            }
+                                            v63 = v119;
+                                            v64 = 0;
+                                            v65 = 0LL;
+                                            if (v119 > 0)
+                                            {
+                                                v66 = (__int64)v132;
+                                                v67 = 0LL;
+                                                v124 = 0LL;
+                                                do
+                                                {
+                                                    if (v65 < 0 || v64 >= v63)
+                                                        MEMORY[0x10] = 0x5474736172434155LL;
+                                                    v68 = qword_14A426370(&v118);
+                                                    sub_1443106F0(*(_QWORD*)(v68 + v67), v112);
+                                                    if ((unsigned __int8)qword_14A48D0E0())
+                                                    {
+                                                        v133 = qword_14A4900E8;
+                                                        BYTE1(v133) = BYTE6(qword_14A4900E8) ^ 0x37;
+                                                        BYTE6(v133) = BYTE1(qword_14A4900E8) ^ 0x37;
+                                                        v69 = v133;
+                                                    }
+                                                    else
+                                                    {
+                                                        v69 = qword_14A48E0E8;
+                                                    }
+                                                    v70 = (__int64*)(v69 + 0x28);
+                                                    if (v113)
+                                                        v71 = (void*)qword_14A426370(v112);
+                                                    else
+                                                        v71 = &unk_1479D0BD8;
+                                                    if ((unsigned __int8)qword_14A491A00())
+                                                    {
+                                                        v133 = unk_14A494A08;
+                                                        LOBYTE(v133) = byte_14A494A0F ^ 0x36;
+                                                        HIBYTE(v133) = unk_14A494A08 ^ 0x36;
+                                                        v72 = v133;
+                                                    }
+                                                    else
+                                                    {
+                                                        v72 = qword_14A492A08;
+                                                    }
+                                                    v73 = *v70;
+                                                    v74 = sub_1442AA870();
+                                                    (*(void(__fastcall**)(__int64*, __int64, void*, __int64))(v73 + 8))(v70, v72, v71, v74);
+                                                    if ((unsigned __int8)byte_14A425310 >= 4u && (unsigned __int8)byte_14A70C920 >= 4u)
+                                                    {
+                                                        if (v113)
+                                                            v75 = (void*)qword_14A426370(v112);
+                                                        else
+                                                            v75 = &unk_1479D0BD8;
+                                                        v127 = v75;
+                                                        ((void(__fastcall*)(__int64*, char*, void*, void*, void**))qword_141D370F0[0])(
+                                                            &v133,
+                                                            &byte_14A70C920,
+                                                            &unk_1482335A0,
+                                                            &unk_1482333D0,
+                                                            &v127);
+                                                    }
+                                                    if (v113)
+                                                        v76 = (void*)qword_14A426370(v112);
+                                                    else
+                                                        v76 = &unk_1479D0BD8;
+                                                    sub_144152E40(&v108, &unk_1482323B0, v76);
+                                                    v114 = 0LL;
+                                                    v77 = qword_14A426370(&v108);
+                                                    v78 = (int)v109;
+                                                    v79 = v77;
+                                                    v115 = (int)v109;
+                                                    if ((_DWORD)v109)
+                                                    {
+                                                        sub_140B77D60(&v114, (unsigned int)v109, 0LL);
+                                                        v80 = qword_14A426370(&v114);
+                                                        sub_14766AF37(v80, v79, 2 * v78);
+                                                    }
+                                                    else
+                                                    {
+                                                        v116 = 0;
+                                                    }
+                                                    sub_141D624A0(v66, &v114);
+                                                    qword_14A426370(&v108);
+                                                    sub_140B5A380(&v108, 0LL);
+                                                    if (qword_14A426370(&v108))
+                                                    {
+                                                        v81 = qword_14A426370(&v108);
+                                                        sub_1441AFDF0(v81);
+                                                    }
+                                                    qword_14A426370(v112);
+                                                    sub_140B5A380(v112, 0LL);
+                                                    if (qword_14A426370(v112))
+                                                    {
+                                                        v82 = qword_14A426370(v112);
+                                                        sub_1441AFDF0(v82);
+                                                    }
+                                                    ++v64;
+                                                    v63 = v119;
+                                                    v67 = v124 + 0x10;
+                                                    ++v65;
+                                                    v124 += 0x10LL;
+                                                } while (v64 < v119);
+                                                v35 = v128;
+                                                v4 = v134;
+                                            }
+                                            sub_140C18800(&v118);
+                                        }
+                                        qword_14A426370(v110);
+                                        sub_140B5A380(v110, 0LL);
+                                        if (qword_14A426370(v110))
+                                        {
+                                            v83 = qword_14A426370(v110);
+                                            sub_1441AFDF0(v83);
+                                        }
+                                    }
+                                    qword_14A426370(&v90);
+                                    sub_140B5A380(&v90, 0LL);
+                                    if (qword_14A426370(&v90))
+                                    {
+                                        v84 = qword_14A426370(&v90);
+                                        sub_1441AFDF0(v84);
+                                    }
+                                }
+                                qword_14A426370(v94);
+                                sub_140B5A380(v94, 0LL);
+                                if (qword_14A426370(v94))
+                                {
+                                    v85 = qword_14A426370(v94);
+                                    sub_1441AFDF0(v85);
+                                }
+                            }
+                            qword_14A426370(v92);
+                            sub_140B5A380(v92, 0LL);
+                            if (qword_14A426370(v92))
+                            {
+                                v86 = qword_14A426370(v92);
+                                sub_1441AFDF0(v86);
+                            }
+                            if (v35)
+                            {
+                                v21 = v35[2]-- == 1;
+                                if (v21)
+                                {
+                                    (**(void(__fastcall***)(_DWORD*))v35)(v35);
+                                    v21 = v35[3]-- == 1;
+                                    if (v21)
+                                        (*(void(__fastcall**)(_DWORD*, __int64))(*(_QWORD*)v35 + 8LL))(v35, 1LL);
+                                }
+                            }
+                            v32 = v117 + 2;
+                            v117 = v32;
+                        } while (v32 != v129);
+                        v19 = v130;
+                    }
+                    sub_140C18800(&v121);
+                }
+                else if ((unsigned __int8)byte_14A425310 >= 2u && (unsigned __int8)byte_14A70C920 >= 2u)
+                {
+                    ((void(__fastcall*)(_QWORD**, char*, void*, void*)) & qword_141D3A5C0[4])(
+                        &v132,
+                        &byte_14A70C920,
+                        &unk_1482335F0,
+                        &unk_1482333D0);
+                }
+                if (v19)
+                {
+                    v21 = v19[2]-- == 1;
+                    if (v21)
+                    {
+                        (**(void(__fastcall***)(_DWORD*))v19)(v19);
+                        v21 = v19[3]-- == 1;
+                        if (v21)
+                            (*(void(__fastcall**)(_DWORD*, __int64))(*(_QWORD*)v19 + 8LL))(v19, 1LL);
+                    }
+                }
+                v87 = (_DWORD*)*((_QWORD*)&v131 + 1);
+                if (*((_QWORD*)&v131 + 1))
+                {
+                    v21 = (*(_DWORD*)(*((_QWORD*)&v131 + 1) + 8LL))-- == 1;
+                    if (v21)
+                    {
+                        (**(void(__fastcall***)(_DWORD*))v87)(v87);
+                        v21 = v87[3]-- == 1;
+                        if (v21)
+                            (*(void(__fastcall**)(_DWORD*, __int64))(*(_QWORD*)v87 + 8LL))(v87, 1LL);
+                    }
+                }
+                qword_14A426370(&v96);
+                sub_140B5A380(&v96, 0LL);
+                result = qword_14A426370(&v96);
+                if (result)
+                {
+                    v89 = qword_14A426370(&v96);
+                    return sub_1441AFDF0(v89);
+                }
+                return result;
+}
 #pragma endregion
 
 

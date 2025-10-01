@@ -894,6 +894,15 @@ int main() {
     i64 r = sub_140ACA100_cpp(arr, 0xDEADBEEF, table);
     std::cout << "result: " << r << std::endl;
 
+
+
+
+
+
+
+
+
+
     // ตัวอย่าง read_in_chunks_simd
     const char sample[] = "This is test data to be read in blocks by SSE2..."; 
     auto data = read_in_chunks_simd(sample, sizeof(sample)-1, 1024);
@@ -915,6 +924,246 @@ int main() {
 
 
 2. หรืออยากให้ฟังก์ชัน sub_140ACA100_cpp รับข้อมูลเป็น std::u16string หรือ std::vector<uint16_t> แทน pointer เดียวครับ.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ดีครับ คุณชี้จุดมาถูกทางแล้ว — ถ้าเกมใช้ bcrypt (CNG / Windows Bcrypt API) สำหรับเข้ารหัส / ถอดรหัสบางส่วน (เช่น AES, hashing, HMAC ฯลฯ) — คุณสามารถใช้ API ของ Windows CNG / bcrypt.dll ร่วมกับ .lib ที่มากับ Windows SDK ได้เลย ไม่จำเป็นต้องหา lib ภายนอกเสริม (ยกเว้นคุณอยากใช้ implementation ของบุคคลที่สาม)
+
+ผมจะอธิบายให้เข้าใจว่า .lib ไหน / .h ไหน / API แนวทางอย่างไรพร้อมตัวอย่างโค้ดให้คุณนำไปทดลองเอง:
+
+
+---
+
+🧩 .lib / .dll / .h ที่เกี่ยวกับ bcrypt บน Windows (CNG)
+
+Windows มี API ชื่อ CNG (Cryptography Next Generation) ซึ่งให้ฟังก์ชันเช่น BCryptEncrypt, BCryptDecrypt, BCryptCreateHash, BCryptDeriveKey, ฯลฯ ซึ่งอยู่ใน bcrypt.dll และ header ที่ประกอบ:
+
+Header: bcrypt.h (และ ntstatus.h) — ประกาศฟังก์ชัน CNG เช่น BCryptDecrypt, BCryptOpenAlgorithmProvider ฯลฯ 
+
+Library import: bcrypt.lib (ซึ่งลิงก์กับ bcrypt.dll) — เมื่อคุณ include bcrypt.h และลิงก์กับ bcrypt.lib คุณก็เรียกใช้ฟังก์ชัน CNG ได้
+
+DLL runtime: bcrypt.dll — เป็น library ที่ระบบปฏิบัติการจัดสรรให้
+
+
+ตัวอย่างจากเอกสาร Microsoft:
+
+> BCryptDecrypt เป็นฟังก์ชันที่ถอดรหัสข้อมูลที่ถูกเข้ารหัสแล้ว (input) ไปเป็น plaintext โดยต้องให้ key, IV, padding info ฯลฯ 
+
+
+
+ดังนั้น ถ้าคุณต้องการ “ถอด” ข้อความที่ถูกเข้ารหัสโดย bcrypt-API ภายในเกม (หรือใช้ CNG) — ใช้ bcrypt.lib + bcrypt.h ได้เลย
+
+
+---
+
+🔍 ตัวอย่างโค้ดเบื้องต้นในการใช้ BCryptDecrypt
+
+สมมุติว่าคุณได้ key / IV / mode ที่เกมใช้มา (ต้อง reverse-engineer มา) — จากนั้น:
+
+#include <windows.h>
+#include <bcrypt.h>
+#pragma comment(lib, "bcrypt.lib")
+
+NTSTATUS decryptWithBcrypt(
+    BCRYPT_KEY_HANDLE hKey,
+    const uint8_t* ciphertext,
+    size_t cbCiphertext,
+    const uint8_t* iv,
+    size_t cbIV,
+    uint8_t* plaintext,
+    size_t cbPlaintext,
+    ULONG* pcbResult)
+{
+    // ตัวเลือก flags — ถ้าต้องใช้ padding
+    DWORD flags = 0;
+    // ถ้าเกมใช้ padding แบบ block padding
+    // flags |= BCRYPT_BLOCK_PADDING;
+
+    NTSTATUS status = BCryptDecrypt(
+        hKey,
+        (PUCHAR)ciphertext,
+        static_cast<ULONG>(cbCiphertext),
+        nullptr,           // pPaddingInfo (NULL ถ้าไม่ใช้ authenticated mode)
+        (PUCHAR)iv,
+        static_cast<ULONG>(cbIV),
+        (PUCHAR)plaintext,
+        static_cast<ULONG>(cbPlaintext),
+        pcbResult,
+        flags);
+
+    return status;
+}
+
+ในขั้นตอนคุณต้อง:
+
+1. Open algorithm provider: BCryptOpenAlgorithmProvider
+
+
+2. Generate / import key: BCryptGenerateKey หรือ BCryptImportKey
+
+
+3. กำหนด IV และ padding ถ้าจำเป็น
+
+
+4. เรียก BCryptDecrypt เพื่อถอดรหัส
+
+
+
+
+---
+
+📂 เกี่ยวกับ Dumper-7 ที่คุณส่งมา
+
+ผมตรวจดู repository Encryqed/Dumper-7 — มันเป็น “SDK Generator สำหรับ UE” 
+แต่ดูเงื่อนไขแล้ว ในรหัสของ Dumper-7 มัน override offset / decryption บางส่วน เช่น:
+
+ใน Generator::InitEngineCore() มี:
+
+InitObjectArrayDecryption([](void* ObjPtr) -> uint8* {
+    return reinterpret_cast<uint8*>(uint64(ObjPtr) ^ 0x8375);
+});
+
+ซึ่งเป็น XOR ปกติ ไม่ใช่ bcrypt เรียกว่า decryption แบบง่าย
+ถ้าเกมใส่ bcrypt จริง ๆ — Dumper-7 อาจไม่รองรับ ถ้าไม่ได้ reverse เงื่อนไขนั้น
+
+
+---
+
+⚠️ ข้อสังเกตสำคัญเกี่ยวกับ bcrypt
+
+bcrypt (CNG) ใน Windows ให้ encryption / decryption / hash / key derivation — ใช้สำหรับ symmetric / asymmetric / hashing
+
+แต่ bcrypt ในงานทั่วไป (เช่น bcrypt() ที่ใช้เก็บรหัสผ่าน) เป็น hash one-way — คุณไม่สามารถ “ถอดกลับ” ได้ (ซึ่งต่างกันกับ CNG) 
+
+ถ้าเกมใช้ bcrypt ในฐานะ “hash” เช่น เก็บ hash รหัสผ่าน / token — คุณ ไม่สามารถ ถอดออก — ได้แค่ “ลอง hashing ใหม่แล้วเปรียบเทียบ”
+
+
+ดังนั้นคุณต้องแยกให้ชัด:
+
+สถานการณ์	ใช้ bcrypt แบบไหน	ถอดรหัสได้หรือไม่	วิธีใช้ใน C++
+
+เกมใช้ CNG / bcrypt.dll (เช่น AES, symmetric crypto)	BCryptDecrypt / BCryptEncrypt	ถอดได้ (ถ้ามีคีย์ + IV + โหมด)	ใช้ bcrypt.h + bcrypt.lib
+เกมใช้ bcrypt แบบ hashing (password hashing)	hash one-way	ไม่สามารถถอดกลับ	ต้อง brute-force / dictionary / same hash compare
+
+
+
+---
+
+✅ สรุป – คุณต้องใช้อะไร
+
+ถ้าเกมใช้ CNG crypto → ใช้ bcrypt.h + ลิงก์ bcrypt.lib
+
+ถ้าคุณยังไม่มี bcrypt.lib ใน project → หามาจาก Windows SDK (มักมาพร้อม)
+
+ถ้าคุณเจอ unresolved externals เช่น _BCryptDecrypt@… — ตรวจให้ลิงก์ bcrypt.lib ถูกต้อง
+
+ถ้าคุณอยากให้ผมช่วย integrate bcrypt + Capstone + __m128i ในกรณีเกมจริง — ผมช่วยเขียนโค้ดตัวอย่างเต็มให้เลยมั้ยครับ?
+
+
+
+
+
+
+
+
+
+
+โอเค งั้นผมจะเขียนโค้ดรวมให้คุณเลยครับ เอาแบบ อ่านค่า 128 บิต (__m128i) จาก address ที่คุณส่งเข้ามา → เช็คว่ามันเป็น block ที่ “น่าจะถูกเข้ารหัส/เก็บ pointer” ตามเงื่อนไข → ถ้าผ่าน ก็คืนค่าเป็น true และให้คุณไปถอด/ใช้งานต่อได้
+
+ตัวอย่าง (C++11 ขึ้นไป, ใช้ <emmintrin.h>):
+
+#include <windows.h>
+#include <emmintrin.h>  // __m128i
+#include <vector>
+#include <cstdint>
+#include <iostream>
+
+// อ่านจาก driver / ReadProcessMemory แบบ generic
+template<typename T>
+T readEx(uint64_t addr, HANDLE hProc)
+{
+    T buffer{};
+    SIZE_T bytesRead = 0;
+    if (!ReadProcessMemory(hProc, reinterpret_cast<LPCVOID>(addr), &buffer, sizeof(T), &bytesRead)) {
+        return T{};
+    }
+    return buffer;
+}
+
+// ฟังก์ชันตรวจสอบว่า block (__m128i) ที่อ่านมาเป็น "ข้อมูลเข้ารหัส/ptr"
+bool isEncodedBlock(const __m128i& block)
+{
+    alignas(16) uint8_t bytes[16];
+    _mm_storeu_si128(reinterpret_cast<__m128i*>(bytes), block);
+
+    int zeroCount = 0;
+    for (int i = 0; i < 16; i++) {
+        if (bytes[i] == 0x00) zeroCount++;
+    }
+
+    // เงื่อนไขตามที่คุณบอก:
+    // - byte แรกหรือท้ายมีค่า != 0
+    // - และมี 0x00 เกินครึ่ง (>= 8 bytes)
+    bool headTailNonZero = (bytes[0] != 0x00 || bytes[15] != 0x00);
+    bool tooManyZeros = (zeroCount >= 8);
+
+    return headTailNonZero && tooManyZeros;
+}
+
+// ใช้งานจริง
+void testEncoded(HANDLE hProc, uint64_t addr)
+{
+    __m128i data = readEx<__m128i>(addr, hProc);
+
+    if (isEncodedBlock(data)) {
+        std::cout << "Address 0x" << std::hex << addr
+                  << " looks like ENCODED pointer block.\n";
+    } else {
+        std::cout << "Address 0x" << std::hex << addr
+                  << " looks like NORMAL data.\n";
+    }
+}
+
+
+---
+
+อธิบาย
+
+1. readEx<T> → อ่าน memory จาก process ด้วย type ที่คุณส่ง (__m128i ก็ได้, uint32_t, float, ฯลฯ)
+
+
+2. isEncodedBlock → เช็คว่า block 16 bytes นั้นมี pattern น่าสงสัย
+
+byte แรก/ท้าย ต้องไม่เป็นศูนย์ทั้งคู่ (อย่างน้อยมีค่า ≠ 0)
+
+จำนวนศูนย์ ≥ 8 (ครึ่งหนึ่งขึ้นไปเป็น 00)
+
+
+
+3. testEncoded → ใช้ตรวจสอบ address ที่ส่งมา
+
+
+
+
+---
+
+👉 คุณสามารถเอาไป integrate กับ Capstone disasm + readEx ที่คุณมีอยู่แล้วได้เลย เช่น เวลาคุณเจอ pointer candidate ก็ดึง 16 bytes (__m128i) มาเช็คก่อนว่า “เข้ารหัสหรือไม่”
+
+คุณอยากให้ผมเขียนเวอร์ชันที่ คืนค่า pointer จริง (uint64_t) ด้วยเลย (เช่นถ้า block ผ่านเงื่อนไข ก็แตกออกมาเลือก field ที่น่าจะเป็น pointer) มั้ยครับ?
 
 
 

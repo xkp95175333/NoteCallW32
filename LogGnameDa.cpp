@@ -1167,3 +1167,386 @@ byte แรก/ท้าย ต้องไม่เป็นศูนย์ท�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#newwwwewww
+
+ยอด — ผมจะสรุปให้เป็นภาพรวมแบบปฏิบัติได้เลย (ภาษาไทย) แล้วตามด้วยโค้ดตัวอย่างที่คุณสามารถเอาไปต่อยอดทันที
+
+สิ่งที่ต้องรู้ก่อนเริ่ม (จากโค้ด Assembly / Decompile ที่คุณให้มา)
+
+โค้ดมี สองโหมดหลัก ขึ้นกับบิตใน *a2 & 1:
+
+ถ้า v6 = *a2 & 1 เป็นจริง → โหมด wide (16-bit / __int16 / word) (ใช้ sub_14AA7A3F0)
+
+ถ้าไม่เป็นจริง → โหมด narrow / byte (8-bit) (ใช้ sub_14AA7A1E0)
+
+
+ทั้งสองโหมดใช้ pattern XOR/rolling (กลุ่ม dword_1538B0BB0, dword_1538B2BB0) เพื่อคำนวณค่า rolling (เหมือน CRC-lookup) และมีการเรียก sub_140ACA100 (ฟังก์ชัน checksum/rolling ที่คุณให้ก่อนหน้านี้)
+
+sub_14AA7A1E0 / sub_14AA7A3F0 เป็น การ XOR byte/word ด้วยค่าที่คำนวณจาก (a2 % 9) — นั่นคือมี 9 แบบของการ XOR (case 0..8) — ต้อง implement ตามต้นฉบับ
+
+จุดที่อ่าน string จริง ๆ อยู่ที่ a1 + 6 (wide) หรือ a1 + 7 (narrow) ตามตัวอย่าง decompile — ดังนั้น offset ของ start string เป็นจุดสำคัญ
+
+
+
+---
+
+คำตอบสั้น ๆ: มีกี่แบบ และต้องปรับกี่จุด?
+
+1. รูปแบบการเข้ารหัสที่เห็นในฟังก์ชันนี้ (หลัก ๆ)
+
+แบบ byte-wise XOR (narrow) — sub_14AA7A1E0 (9 แบบตาม a2 % 9)
+
+แบบ word-wise XOR (wide) — sub_14AA7A3F0 (9 แบบตาม a2 % 9)
+
+แบบ rolling-table (CRC-like) — ใช้ dword_1538B0BB0 / dword_1538B2BB0 lookup + shifts/xor (ใน loop)
+
+อ่าน/เช็ค flag byte (bit0) เพื่อเลือกโหมด wide/narrow
+
+
+
+2. จุดที่ต้องปรับ/ดู/มีตัวแปรสำคัญ (integration points) — อย่างน้อยต้องมี:
+
+address ของ GNames (หรือ pointer table) — PtrGname
+
+การอ่าน chunk pointer จาก PtrGname + (chunkOffset+1)*8
+
+การอ่าน name entry pointer จาก chunk (index nameOffset)
+
+offsets ใน structure — start-of-string (น่าจะ +6 สำหรับ wide, +7 สำหรับ narrow) และ field ที่เก็บ flags/length (a2 ใน decomp)
+
+ที่อยู่ของ lookup tables (dword_1538B0BB0, dword_1538B2BB0) — อ่านมาจาก process เพื่อใช้คำนวณ
+
+ImageBase หรือ pointer ที่ใช้ใน XOR (ใน assemble: lea r8, __ImageBase) — อาจใช้เป็น base index
+
+ตัวแปรชั่วคราวสำหรับ buffer เมื่ออ่านแบบ __m128i (16-bytes chunk)
+
+ถ้าจะเขียนค่าแทน (apply decoded back) ต้องมี buffer/flag ว่าเขียนจริงหรือแค่ decode locally
+
+
+
+3. ถ้าใช้ฟังก์ชันที่ผมเขียนด้านบน (อ่านแบบ __m128i) แล้วแทนค่าเองตามไปด้วย ต้องมีตัวแปร/ข้อมูลเพิ่ม:
+
+HANDLE hProc หรือ driver handle ที่อ่านหน่วยความจำ
+
+BaseAddress ของ process/module (Addr::processBasemodule.BaseAddress)
+
+Offsets: OffsetGname (และ fallback decrypt function ถ้า pointer ถูกเข้ารหัส)
+
+Address ของ lookup tables (dword_1538B0BB0, dword_1538B2BB0) — เก็บเป็น uint64_t tbl0_addr, tbl2_addr แล้วอ่านตาราง 256*4 ไบต์
+
+bool isWide หรือ read flag byte (จาก entry header) เพื่อเลือก routine
+
+temporary buffers: std::vector<uint8_t> bufferBytes, std::vector<uint16_t> bufferWords
+
+ถ้าต้องการความเร็ว: buffer ที่เก็บ data ในหน่วย __m128i เช่น std::vector<__m128i> chunkVec (แต่ยังต้องแปลงเป็น bytes/words เพื่อ decode)
+
+ถ้าจะคำนวณ checksum/validate ต้องเก็บค่าที่ return (เช่น a1+0x806, a1+0x808 ใน decomp) เพื่อเปรียบเทียบ
+
+
+
+
+
+---
+
+ต่อไปผมให้โค้ดตัวอย่าง (ครบ flow) — โค้ดนี้เป็น best-effort โดยผมแปลง logic จาก decompiled code มาเป็น C++ ที่ใช้ ReadProcessMemory (หรือ driver read) + ใช้ __m128i อ่านทีละ 16 ไบต์ แล้ว decode ตาม case 0..8 สำหรับ byte/word branch และมีฟังก์ชัน rolling-table (CRC-like) ที่สามารถใช้กับ table ที่อ่านมาจาก process ได้
+
+> หมายเหตุสำคัญ: บางตำแหน่ง (เช่นตำแหน่งของ a2 field ที่จริง ๆ อาจอยู่ที่ offset อื่น) ผมเดาจาก decompile — คุณอาจต้องปรับ offset เช่น nameHeaderFlagOffset หรือ nameStartOffset ให้ตรงกับเกมจริง
+
+
+
+// GetNameFromFName_robust.cpp
+// C++17, Windows.
+// Requires: <emmintrin.h>, linking bcrypt/lib not required here.
+// Uses ReadProcessMemory - replace with your read driver function if needed.
+
+#include <windows.h>
+#include <emmintrin.h>
+#include <vector>
+#include <string>
+#include <cstdint>
+#include <cassert>
+#include <iostream>
+
+// --- helper reads (wrap ReadProcessMemory or your driver read) ---
+template<typename T>
+bool read_mem(HANDLE hProc, uint64_t address, T &out) {
+    SIZE_T br = 0;
+    return ReadProcessMemory(hProc, (LPCVOID)address, &out, sizeof(T), &br) && br == sizeof(T);
+}
+bool read_bytes(HANDLE hProc, uint64_t address, void* buf, size_t sz) {
+    SIZE_T br = 0;
+    return ReadProcessMemory(hProc, (LPCVOID)address, buf, sz, &br) && br == sz;
+}
+
+// read using __m128i block (unaligned safe)
+bool read128_block(HANDLE hProc, uint64_t address, __m128i &out) {
+    alignas(16) uint8_t tmp[16];
+    if (!read_bytes(hProc, address, tmp, 16)) return false;
+    out = _mm_loadu_si128(reinterpret_cast<const __m128i*>(tmp));
+    return true;
+}
+
+// --- decoding helpers translated from sub_14AA7A1E0 (byte) and sub_14AA7A3F0 (word) ---
+void decode_bytes_case(std::vector<uint8_t> &buf, unsigned int a2) {
+    size_t n = buf.size();
+    unsigned int mode = a2 % 9;
+    for (size_t i = 0; i < n && i < a2; ++i) { // decompiled loop used comparision result < a2
+        uint8_t key = 0;
+        switch (mode) {
+            case 0: key = static_cast<uint8_t>((a2 + (a2 & 0x1F) + 0x80) | 0x7F); break;
+            case 1: key = static_cast<uint8_t>((a2 + (a2 ^ 0xDF) + 0x80) | 0x7F); break;
+            case 2: key = static_cast<uint8_t>((a2 + (a2 | 0xCF) + 0x80) | 0x7F); break;
+            case 3: key = static_cast<uint8_t>((0x21 * a2 + 0x80) | 0x7F); break;
+            case 4: key = static_cast<uint8_t>((a2 + (a2 >> 2) + 0x80) | 0x7F); break;
+            case 5: key = static_cast<uint8_t>((3 * (a2 - 0x29)) | 0x7F); break;
+            case 6: key = static_cast<uint8_t>((a2 + ((4 * a2) | 5) + 0x80) | 0x7F); break;
+            case 7: key = static_cast<uint8_t>((a2 + ((a2 >> 4) | 7) + 0x80) | 0x7F); break;
+            case 8: key = static_cast<uint8_t>((a2 + (a2 ^ 0xC) + 0x80) | 0x7F); break;
+            default: key = static_cast<uint8_t>((a2 + (a2 ^ 0x40) + 0x80) | 0x7F); break;
+        }
+        buf[i] ^= key;
+    }
+}
+
+void decode_words_case(std::vector<uint16_t> &buf, unsigned int a2) {
+    size_t n = buf.size();
+    unsigned int mode = a2 % 9;
+    for (size_t i = 0; i < n && (i*2) < a2; ++i) { // decompiled increments by 2 for word
+        uint16_t key = 0;
+        switch (mode) {
+            case 0: key = static_cast<uint16_t>((a2 + (a2 & 0x1F) + 0x80) | 0x7F); break;
+            case 1: key = static_cast<uint16_t>((a2 + (a2 ^ 0xDF) + 0x80) | 0x7F); break;
+            case 2: key = static_cast<uint16_t>((a2 + (a2 | 0xCF) + 0x80) | 0x7F); break;
+            case 3: key = static_cast<uint16_t>((0x21 * a2 + 0x80) | 0x7F); break;
+            case 4: key = static_cast<uint16_t>((a2 + (a2 >> 2) + 0x80) | 0x7F); break;
+            case 5: key = static_cast<uint16_t>((3 * a2 + 0x85) | 0x7F); break; // note: decompiled word-case uses different constant
+            case 6: key = static_cast<uint16_t>((a2 + ((4 * a2) | 5) + 0x80) | 0x7F); break;
+            case 7: key = static_cast<uint16_t>((a2 + ((a2 >> 4) | 7) + 0x80) | 0x7F); break;
+            case 8: key = static_cast<uint16_t>((a2 + (a2 ^ 0xC) + 0x80) | 0x7F); break;
+            default: key = static_cast<uint16_t>((a2 + (a2 ^ 0x40) + 0x80) | 0x7F); break;
+        }
+        buf[i] ^= key;
+    }
+}
+
+// --- rolling-table CRC-like (generic) ---
+// buf: bytes to feed, table: pointer to 256 uint32 entries read from target
+uint32_t rolling_table_calc(const std::vector<uint8_t> &buf, const uint32_t table256[256], uint32_t init = 0xFFFFFFFFu) {
+    uint32_t r = init;
+    for (uint8_t b : buf) {
+        r = table256[(uint8_t)(r ^ b)] ^ (r >> 8);
+    }
+    return r;
+}
+
+// --- high-level routine to read name entry and decode ---
+std::string GetNameFromFName_robust(
+    HANDLE hProc,
+    uint32_t ukey,
+    uint64_t PtrGname,
+    uint64_t tbl0_addr, // address of dword_1538B0BB0 in remote process
+    uint64_t tbl2_addr, // address of dword_1538B2BB0 in remote process (if used)
+    uint64_t imageBase  // __ImageBase
+) {
+    // extract chunk and name index (as your snippet)
+    uint32_t chunkOffset = (ukey >> 18) & 0x3FFFu;
+    uint32_t nameOffset  = ukey & 0x3FFFFu;
+
+    if (!PtrGname) return {};
+
+    // read chunk pointer (PtrGname[(chunkOffset+1)]) as u64
+    uint64_t chunkPtrAddr = PtrGname + static_cast<uint64_t>((chunkOffset + 1) * 8);
+    uint64_t chunkPtr = 0;
+    if (!read_mem<uint64_t>(hProc, chunkPtrAddr, chunkPtr) || !chunkPtr) return {};
+
+    // read name entry pointer from chunk: typically chunkPtr[nameOffset]
+    uint64_t nameEntryPtr = 0;
+    uint64_t namePtrAddr = chunkPtr + static_cast<uint64_t>(nameOffset * 8);
+    if (!read_mem<uint64_t>(hProc, namePtrAddr, nameEntryPtr) || !nameEntryPtr) return {};
+
+    // read first few bytes of the header to find flag & lengths
+    // Based on decompile: a2 is pointer to some header: *a2 & 1 => wide flag
+    // In decompile they later access word at a2 >> 6 etc. We'll try to read first 8 bytes:
+    alignas(8) uint8_t header8[8] = {0};
+    if (!read_bytes(hProc, nameEntryPtr, header8, sizeof(header8))) return {};
+
+    bool isWide = (header8[0] & 1) != 0;            // *a2 & 1
+    // guess length-field: they used *(unsigned __int16 *)a2 >> 6 in decompile
+    // we try reading a 16-bit value at header start:
+    uint16_t header16 = *reinterpret_cast<uint16_t*>(header8);
+    unsigned int lengthCandidate = (unsigned int)header16 >> 6; // used by decompiled code
+    if (lengthCandidate == 0) lengthCandidate = 256; // fallback limit
+
+    // Read the actual string data start addresses (based on decompile)
+    uint64_t dataStart = isWide ? (nameEntryPtr + 6) : (nameEntryPtr + 7);
+
+    // read up to N chars/words (safe guard)
+    size_t maxChars = 512;
+    if (isWide) {
+        // read words until 0 (null-terminated) but read in chunks via __m128i
+        std::vector<uint16_t> words;
+        words.reserve(256);
+        for (size_t i = 0; i < maxChars; ++i) {
+            uint16_t w = 0;
+            if (!read_mem<uint16_t>(hProc, dataStart + i * 2, w)) break;
+            if (w == 0) { words.push_back(0); break; }
+            words.push_back(w);
+        }
+
+        // decode words using the word-case function (we used header16 >> 6 as a2)
+        decode_words_case(words, lengthCandidate);
+
+        // convert words -> utf8 string
+        std::u16string u16s;
+        for (uint16_t w : words) {
+            if (w == 0) break;
+            u16s.push_back(w);
+        }
+        // convert u16 to utf8
+        std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> conv;
+        return conv.to_bytes(reinterpret_cast<char16_t*>(u16s.data()), reinterpret_cast<char16_t*>(u16s.data()+u16s.size()));
+    } else {
+        // narrow (bytes)
+        std::vector<uint8_t> bytes;
+        bytes.reserve(256);
+        for (size_t i = 0; i < maxChars; ++i) {
+            uint8_t b = 0;
+            if (!read_mem<uint8_t>(hProc, dataStart + i, b)) break;
+            if (b == 0) { bytes.push_back(0); break; }
+            bytes.push_back(b);
+        }
+
+        // decode bytes using byte-case (header16 >> 6)
+        decode_bytes_case(bytes, lengthCandidate);
+
+        // convert to std::string (assuming ASCII/UTF-8 already)
+        std::string out;
+        for (uint8_t c : bytes) {
+            if (c == 0) break;
+            out.push_back(char(c));
+        }
+        return out;
+    }
+}
+
+
+---
+
+อธิบายโค้ด & สิ่งที่คุณต้องปรับตามจริงในเกม
+
+1. Offset ของ header / a2 field — ผมใช้ nameEntryPtr + 0..+7 แล้วใช้ first byte/word as header (ตาม decompile) — คุณต้องเช็คว่าในเกมจริง a2 อยู่ที่ที่เดียวกันหรือไม่ (บางเกมเก็บในโครงสร้างอื่น)
+
+
+2. การอ่าน chunk pointer — รูปแบบ PtrGname[(chunkOffset+1)] ผมตามตัวอย่างคุณ — บางเกมอาจใช้ layout ต่างกัน (ต้องปรับ)
+
+
+3. ค่า lengthCandidate (a2 >> 6) — ผมเดาจาก decompile ว่าพวก length/size ถูกเก็บแบบนี้ — ถ้าพบว่าผลลัพธ์ไม่ถูกต้อง ให้เปลี่ยนการคำนวณ length (เช่นอ่านจาก field อื่นหรืออ่านจนเจอ \0)
+
+
+4. lookup tables — ถ้าคุณต้องคำนวณ rolling-table หรือ validate checksum ให้ read_mem ตาราง 256*4 ไบต์ จาก tbl0_addr/tbl2_addr แล้วเรียก rolling_table_calc ก่อน/หลัง decode เพื่อเช็คค่า a1+0x806/0x808 ตาม decompile
+
+
+5. การใช้ __m128i — โค้ดตอนอ่านทีละ char/word ปกติ ถาต้องการ optimize ให้ใช้ read128_block เพื่อดึง 16 ไบต์ต่อครั้ง จากนั้นแยกเป็น bytes/words ใน buffer ก่อน decode — โค้ดตัวอย่างใช้ read_mem ต่อค่า เพราะอ่านทีละตัวง่ายเข้าใจ แต่คุณสามารถเปลี่ยนเป็น loop ที่ read128_block เป็นชุด ๆ เพื่อความเร็ว
+
+
+6. เขียนคืน (แทนค่าใน process) — โค้ดตัวอย่างนี้ ไม่เขียนกลับไป ถ้าคุณต้องการเขียน decoded data กลับไปยัง process (dangerous) ให้มี:
+
+bool doWriteBack parameter
+
+หลัง decode ให้เรียก WriteProcessMemory(hProc, (LPVOID)dataStart, decodedBuf.data(), decodedSize, &bw) (หรือ driver write)
+
+อย่าลืมตรวจสอบ permissions / anti-cheat
+
+
+
+
+
+---
+
+Checklist ที่ควรมีในโปรเจกต์คุณ (ตัวแปร/ข้อมูล)
+
+HANDLE hProc หรือ driver interface
+
+uint64_t processBase (module base)
+
+uint64_t PtrGname (GNames base)
+
+uint64_t tbl0_addr, tbl2_addr (addresses for lookup tables)
+
+uint64_t imageBase (if used for index)
+
+temporary buffer vectors (bytes / words / __m128i)
+
+reader function (read_mem, read_bytes, read128_block)
+
+write function (ถ้าจะเขียน)
+
+demangle / capstone contexts (ถ้าจะ disasm/resolve)
+
+fallback / heuristics (เช่น อ่านจนเจอ NUL, หรือ ถ้า lengthCandidate == 0 ให้ใช้ different method)
+
+
+
+---
+
+สรุปสั้น ๆ (action plan)
+
+1. โหลด/อ่าน PtrGname และ lookup tables จาก process
+
+
+2. สำหรับแต่ละ ukey หา chunkPtr → nameEntryPtr
+
+
+3. อ่าน header (first byte/word) เพื่อดู isWide และ length-related field
+
+
+4. อ่าน data block (ใช้ read128_block เป็นชุด ๆ) เก็บเป็น bytes/words
+
+
+5. เรียก decode_bytes_case หรือ decode_words_case ตามโหมด
+
+
+6. แปลงเป็น std::string แล้วคืนค่า
+
+
+7. ถ้าต้องการ validate: run rolling_table_calc กับ table ที่อ่านมา แล้วเทียบกับ stored checksum fields (a1+0x806 / 0x808 ใน decompile)
+
+
+
+
+---
+
+ถ้าคุณต้องการผมจะ:
+
+แก้โค้ดตัวอย่างให้ ใช้ read128_block เต็มรูปแบบ เพื่อให้เร็วขึ้น (อ่านทีละ 16 ไบต์แล้ว decode เป็นชุด) — หรือ
+
+ปรับให้ เขียนค่า decoded กลับ ใน process (ถ้าคุณต้องการ) — ผมจะใส่ example WriteProcessMemory/driver write
+
+หรือถ้าคุณส่ง offset ที่แน่นอน (เช่น nameHeaderFlagOffset, nameStartOffset, GNames offset ที่ถูกต้องจากเกมที่คุณทดสอบ) ผมจะปรับโค้ดให้ตรง 1:1 กับเกมและทดสอบ logic decode ให้ชัวร์
+
+
+บอกผมเลยว่าต้องการแบบไหนจาก 3 ข้อนี้ — ผมทำให้เสร็จตอนนี้ได้เลย (พร้อมโค้ด optimized หรือ with write-back)
+
+
+

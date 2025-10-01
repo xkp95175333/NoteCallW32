@@ -733,3 +733,188 @@ __int64 __fastcall sub_140ACA100(__int16 *a1, int a2)
   }
   return ~i;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ได้ — ผมแปลงฟังก์ชันที่คุณให้มาเป็น C++ แล้วเขียนอีกฟังก์ชันที่อ่านทีละ 1024 ไบต์โดยใช้ __m128i (SSE2) เพื่อคัดลอกข้อมูลเป็นบล็อก 16 ไบต์ต่อครั้ง แล้วเก็บผลเป็น std::vector<uint8_t> ให้เลยครับ
+
+ฟังก์ชันแรก sub_140ACA100_cpp เป็นการแปลงตรง ๆ จากโค้ดที่ให้มา (สมมติว่าตาราง dword_1538B0BB0 เป็นตาราง 256 ค่า uint32_t — เราเอาเป็นพารามิเตอร์เข้าไป)
+
+ฟังก์ชันที่สอง read_in_chunks_simd จะคัดลอกข้อมูลจาก pointer แหล่งที่มาเป็นชิ้น ๆ ขนาด 1024 ไบต์ (หรือขนาดที่เหลือสุดท้าย) โดยใช้ _mm_loadu_si128 / _mm_storeu_si128 (safe สำหรับ unaligned) เพื่อให้โหลด/เก็บทีละ 16 ไบต์ (__m128i) และคืน std::vector<uint8_t> ที่รวมทุกบล็อก
+
+
+โค้ดด้านล่างพร้อมคอมเมนต์ — ปรับเปลี่ยนชื่อตาราง/พารามิเตอร์ตามที่คุณต้องการได้เลย:
+
+// build: MSVC / g++ with -msse2
+#include <cstdint>
+#include <cstddef>
+#include <vector>
+#include <immintrin.h> // for __m128i, _mm_loadu_si128, _mm_storeu_si128
+#include <cstring>     // for memcpy (fallback/edge-case)
+
+using u8 = uint8_t;
+using u16 = uint16_t;
+using u32 = uint32_t;
+using i64 = int64_t;
+
+// -----------------------------
+// ฟังก์ชันแปลงจาก sub_140ACA100
+// -----------------------------
+// a1 : pointer ไปที่ sequence ของ 16-bit values (จบด้วย 0)
+// a2 : ค่าเริ่มต้น (int)
+// table256 : ตาราง 256 ค่า (เหมือน dword_1538B0BB0)
+// ผลลัพธ์คืนค่าเป็น __int64 เหมือนต้นฉบับ
+i64 sub_140ACA100_cpp(const u16* a1, int a2, const u32 table256[256]) {
+    // ป้องกัน null
+    if (!a1 || !table256) return 0;
+
+    // ทำตาม logic เดิม:
+    // v2 = *a1;
+    // v3 = a1 + 1;
+    // for (i = ~a2; v2; i = table[(uint8_t)v8] ^ (v8 >> 8)) { ... }
+    u16 v2 = *a1;
+    const u16* v3 = a1 + 1;
+    u32 i = static_cast<u32>(~a2); // dword
+    u32 v8 = 0;
+
+    while (v2 != 0) {
+        // HIBYTE(v2)
+        u8 high = static_cast<u8>(v2 >> 8);
+        ++v3; // ++v3
+        // v6 = table[(unsigned __int8)(v2 ^ i)] ^ (i >> 8);
+        u8 idx1 = static_cast<u8>(static_cast<u8>(v2 & 0xFF) ^ static_cast<u8>(i & 0xFF));
+        u32 v6 = table256[idx1] ^ (i >> 8);
+
+        // v7 = table[(unsigned __int8)(v6 ^ v5)] ^ (v6 >> 8);
+        u8 idx2 = static_cast<u8>(static_cast<u8>(v6 & 0xFF) ^ high);
+        u32 v7 = table256[idx2] ^ (v6 >> 8);
+
+        // v2 = v3[0xFFFFFFFF]  --> v3[-1]
+        // เพราะในต้นฉบับ: ++v3; then v3[0xFFFFFFFF] gives previous element
+        v2 = v3[-1];
+
+        // v8 = table[(unsigned __int8)v7] ^ (v7 >> 8);
+        u8 idx3 = static_cast<u8>(v7 & 0xFF);
+        v8 = table256[idx3] ^ (v7 >> 8);
+
+        // update i for next iteration (as loop footer does)
+        i = v8; // but note original sets i = table[...] ^ (v8 >> 8) at loop head; here we've computed v8 accordingly
+        // In original: i = dword_1538B0BB0[(unsigned __int8)v8] ^ (v8 >> 8)
+        // so apply that:
+        u8 idx4 = static_cast<u8>(v8 & 0xFF);
+        i = table256[idx4] ^ (v8 >> 8);
+        // loop continues while v2 != 0
+    }
+
+    return static_cast<i64>(~i);
+}
+
+// -----------------------------
+// ฟังก์ชันอ่านทีละ 1024 โดยใช้ __m128i (SSE2)
+// -----------------------------
+// src: pointer แหล่งข้อมูล (ไม่จำเป็นต้อง aligned)
+// length: จำนวนไบต์ที่จะอ่าน
+// block_size: ขนาดบล็อกอ่านทีละรอบ (default = 1024)
+// คืนค่า: vector<uint8_t> ที่รวมข้อมูลทั้งหมด
+std::vector<u8> read_in_chunks_simd(const void* src, size_t length, size_t block_size = 1024) {
+    std::vector<u8> out;
+    if (!src || length == 0) return out;
+
+    const u8* p = reinterpret_cast<const u8*>(src);
+    out.reserve(length);
+
+    const size_t simd_bytes = 16; // __m128i size
+    size_t offset = 0;
+
+    while (offset < length) {
+        size_t remaining = length - offset;
+        size_t this_block = (remaining >= block_size) ? block_size : remaining;
+
+        // copy this_block bytes using __m128i in chunks of 16
+        size_t n_simd = this_block / simd_bytes;
+        size_t tail = this_block % simd_bytes;
+
+        // ensure out has space
+        size_t old_size = out.size();
+        out.resize(old_size + this_block);
+        u8* dst = out.data() + old_size;
+
+        const u8* read_ptr = p + offset;
+        u8* write_ptr = dst;
+
+        for (size_t k = 0; k < n_simd; ++k) {
+            // unaligned load/store safe functions
+            __m128i reg = _mm_loadu_si128(reinterpret_cast<const __m128i*>(read_ptr));
+            _mm_storeu_si128(reinterpret_cast<__m128i*>(write_ptr), reg);
+            read_ptr += simd_bytes;
+            write_ptr += simd_bytes;
+        }
+
+        // handle tail bytes
+        if (tail) {
+            // copy remaining tail bytes (<=15)
+            std::memcpy(write_ptr, read_ptr, tail);
+        }
+
+        offset += this_block;
+    }
+
+    return out;
+}
+
+// -----------------------------
+// ตัวอย่างการใช้งาน (pseudo)
+// -----------------------------
+/*
+#include <iostream>
+int main() {
+    // ตัวอย่าง table (ต้องแทนที่ด้วยค่าจริงของคุณ)
+    u32 table[256];
+    for (int j=0;j<256;++j) table[j] = j; // ตัวอย่าง
+
+    // ตัวอย่างข้อมูล 16-bit sequence (จบด้วย 0)
+    u16 arr[] = { 0x1234, 0xABCD, 0x0001, 0x0000 }; // สังเกตตัวสุดท้ายเป็น 0 -> loop หยุด
+    i64 r = sub_140ACA100_cpp(arr, 0xDEADBEEF, table);
+    std::cout << "result: " << r << std::endl;
+
+    // ตัวอย่าง read_in_chunks_simd
+    const char sample[] = "This is test data to be read in blocks by SSE2..."; 
+    auto data = read_in_chunks_simd(sample, sizeof(sample)-1, 1024);
+    std::cout << "read bytes: " << data.size() << std::endl;
+    return 0;
+}
+*/
+
+ถ้าต้องการ:
+
+ผมจะใส่ตาราง dword_1538B0BB0 แบบสำเร็จ (เช่นตาราง CRC32 แบบมาตรฐาน) ให้ตรงกับต้นฉบับ หรือ
+
+เปลี่ยน read_in_chunks_simd ให้ทำ ReadProcessMemory ของ process อื่น (ผมสามารถเพิ่มตัวอย่าง ReadProcessMemory บน Windows ได้ แต่ต้องระบุ HANDLE และสิทธิ์) — บอกมาได้เลย
+
+
+บอกด้วยถ้าต้องการให้ผม:
+
+1. ปรับให้ใช้ AVX (32 bytes) แทน SSE2 (16 bytes)
+
+
+2. หรืออยากให้ฟังก์ชัน sub_140ACA100_cpp รับข้อมูลเป็น std::u16string หรือ std::vector<uint16_t> แทน pointer เดียวครับ.
+
+
+

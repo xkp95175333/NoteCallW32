@@ -1607,6 +1607,156 @@ for (int i = 0; i < MAX_DEPTH; ++i) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+การเข้ารหัส/ถอดรหัส Pointer Address ด้วย SSE
+
+ในการวิเคราะห์โค้ดภาษาแอสเซมบลีข้างต้น พบว่ามีการเข้ารหัส (encryption) ค่า pointer address เอาไว้ ซึ่งถ้าเราต้องการถอดรหัส pointer นี้ จำเป็นต้องเข้าใจลำดับการทำงานและเงื่อนไขต่างๆ ในโค้ดดังกล่าว โดยเฉพาะจุดที่โค้ดอ่านค่าจากตัวแปร encodedPtr1 และ encodedPtr2 ที่ผู้ใช้กล่าวถึง รวมทั้งการตรวจสอบ “หัว” และ “ท้าย” ของข้อมูลด้วย ดังนั้นขั้นตอนทั่วไปมีดังนี้
+
+1. รวบรวมค่า pointer เข้าด้วยกันเป็น 128 บิต – จากข้อความที่ผู้ใช้กล่าวถึง เราสามารถนำตัวแปร 64 บิตสองตัว (encodedPtr1 และ encodedPtr2) มารวมกันเป็นข้อมูล 128 บิตหนึ่งชุดได้ โดยใช้ SSE intrinsic เช่น _mm_set_epi64x ซึ่งจะเก็บค่าสองค่า 64 บิตไว้ในตัวแปรชนิด __m128i:
+
+__m128i combined = _mm_set_epi64x(encodedPtr2, encodedPtr1);
+
+การทำเช่นนี้จะได้ข้อมูล 16 ไบต์ (128 บิต) ที่ประกอบด้วยค่าของตัวแปรทั้งสองรวมกัน
+
+
+2. ตรวจสอบเงื่อนไข “หัว” และ “ท้าย” – โค้ดต้นฉบับมีการเช็คว่าบิตแรกของ encodedPtr (จาก [rdx] & 1) เป็น 0 หรือ 1 เพื่อตัดสินการทำงานคนละสาขา การอิมพลีเมนต์ด้วย SSE สามารถทำได้โดยการตรวจสอบส่วนของข้อมูลในตำแหน่งต่างๆ ของ __m128i ซึ่งอาจใช้ intrinsic อย่าง _mm_extract_epi16 เพื่อดึงค่า 16-บิต ณ ตำแหน่งที่ต้องการ (แม้โค้ดต้นฉบับพูดถึง “ตำแหน่งที่ 2” หรือ “6,7,8” ที่ไม่ชัดเจนว่าเป็น byte index ใด แต่แนวคิดคือการตรวจสอบบางไบต์ว่าไม่เป็น 0 หรือไม่) ตัวอย่างเช่น:
+
+// ดึงค่า 16 บิตในตำแหน่ง index 1 (นับจาก 0) ของ __m128i – สมมุติเป็น “หัว”
+uint16_t head = _mm_extract_epi16(combined, 1);
+// ดึงค่า 16 บิตสองตำแหน่งสุดท้ายของ __m128i – สมมุติเป็น “หาง”
+uint16_t tail1 = _mm_extract_epi16(combined, 6);
+uint16_t tail2 = _mm_extract_epi16(combined, 7);
+
+จากนั้นตรวจสอบเงื่อนไขตามที่ผู้ใช้กล่าว (เช่น “หัวและท้ายไม่ใช่ 0” และส่วนกลางบางตำแหน่งเป็น 0) จากค่าที่ดึงมา ตัวอย่าง:
+
+if (head != 0 && (tail1 != 0 || tail2 != 0)) {
+    // สร้าง address ตัวชี้ใหม่จากหัว-หาง (สมมุติว่าจะนำมาประกอบที่อยู่จริง)
+    uint64_t candidate = (static_cast<uint64_t>(head) << 48) | static_cast<uint64_t>(tail2);
+    // ตรวจสอบหน่วยความจำที่ pointer ชี้ว่ามีค่าไม่ใช่ 0 ทั้งหมด
+    if (!isAllZero(reinterpret_cast<uint64_t*>(candidate))) {
+        return candidate;  // เจอ address ที่น่าจะถูกต้อง
+    }
+}
+
+ในตัวอย่างนี้สมมุติว่าเราเชื่อมเอา head เป็นบิตบนสุดของ address และ tail2 เป็นบิตล่างสุด อย่างไรก็ตาม การประกอบ address จริง ๆ อาจต้องปรับตามโครงสร้างจริง
+
+
+3. โหลดและตรวจสอบหน่วยความจำด้วย SSE – สมมุติว่ามี address ใหม่ (candidate) ที่สร้างขึ้นจากหัว-ท้ายของ pointer ข้างต้น เราจำเป็นต้องตรวจสอบว่าบริเวณหน่วยความจำที่ address นั้นชี้ไปมีข้อมูลที่ไม่เป็น 0 ทั้งหมดหรือไม่ วิธีการที่สะดวกคือโหลดข้อมูล 128 บิต (16 ไบต์) จากหน่วยความจำแล้วตรวจสอบด้วย SSE เช่น:
+
+bool isAllZero(const uint64_t* ptr) {
+    // โหลด 16 ไบต์จากหน่วยความจำ (movdqu)
+    __m128i v = _mm_loadu_si128(reinterpret_cast<const __m128i*>(ptr));
+#if defined(__SSE4_1__)
+    // ถ้ามี SSE4.1 ใช้ _mm_testz_si128 ตรวจสอบว่า v เป็น 0 ทั้งหมดหรือไม่
+    return _mm_testz_si128(v, v) != 0;
+#else
+    // ถ้าไม่มี SSE4.1 ใช้วิธีเทียบกับ zero vector
+    __m128i zero = _mm_setzero_si128();  // สร้างเวกเตอร์ศูนย์1
+    int mask = _mm_movemask_epi8(_mm_cmpeq_epi8(v, zero));
+    return (mask == 0xFFFF);
+#endif
+}
+
+โดยในกรณีที่ไม่มี SSE4.1 เราใช้วิธีเปรียบเทียบแต่ละไบต์กับศูนย์ด้วย _mm_cmpeq_epi8 และ _mm_movemask_epi8 เพื่อตรวจสอบว่าไบต์ทั้งหมดเท่ากับศูนย์หรือไม่ ซึ่งสอดคล้องกับคำแนะนำบน StackOverflow ว่าสามารถใช้คำสั่งเหล่านี้ตรวจสอบว่า __m128i เป็นศูนย์ทั้งหมด. ถ้า isAllZero() คืนค่า false หมายความว่ายังมีไบต์ที่ไม่เป็น 0 อยู่ ซึ่งสอดคล้องกับเงื่อนไขที่ต้องการ
+
+
+4. หมุนข้อมูล (Rotate) ในกรณีไม่พบ – ถ้าการตรวจสอบครั้งแรกไม่สำเร็จ ผู้ใช้เสนอไอเดียการหมุนข้อมูล 2 ตำแหน่งเป็นขั้นตอน (โดยให้ 0x0000 อยู่บนก่อน และหมุนทีละ 2) ในระดับ SSE เราสามารถทำได้ด้วยการใช้ intrinsic ของ SSE2 เช่น _mm_slli_si128 และ _mm_srli_si128 เพื่อ shift ซ้ายและขวา แล้ว OR เข้าด้วยกัน เช่น:
+
+for (int shift = 2; shift < 16; shift += 2) {
+    __m128i rotated = _mm_or_si128(
+        _mm_slli_si128(combined, shift),
+        _mm_srli_si128(combined, 16 - shift)
+    );
+    // ดึงค่า head/tail จากข้อมูลที่หมุนแล้วและตรวจสอบเช่นเดิม
+    uint16_t newHead = _mm_extract_epi16(rotated, 1);
+    uint16_t newTail1 = _mm_extract_epi16(rotated, 6);
+    uint16_t newTail2 = _mm_extract_epi16(rotated, 7);
+    if (newHead != 0 && (newTail1 != 0 || newTail2 != 0)) {
+        uint64_t candidate = (static_cast<uint64_t>(newHead) << 48) |
+                              static_cast<uint64_t>(newTail2);
+        if (!isAllZero(reinterpret_cast<uint64_t*>(candidate))) {
+            return candidate;
+        }
+    }
+}
+
+แนวทางนี้จะหมุนข้อมูลทีละ 2 ไบต์ (16 บิต) ภายใน __m128i แล้วตรวจสอบเงื่อนไขซ้ำอีกครั้ง โดยใช้วิธีเดียวกับขั้นตอนก่อนหน้า จนกว่าจะพบ address ที่หน่วยความจำไม่เป็นศูนย์เต็มหรือหมดวิธี
+
+
+5. สรุปการทำงานและโค้ดตัวอย่าง – รวมขั้นตอนทั้งหมดข้างต้นเป็นฟังก์ชัน C++ สรุปได้ดังนี้:
+
+
+
+#include <emmintrin.h> // SSE2 intrinsics
+#include <cstdint>
+
+// ตรวจสอบว่าหน่วยความจำ 8 ไบต์ (หรือ 16 ไบต์) ทั้งหมดเป็น 0 หรือไม่
+bool isAllZero(const uint64_t* ptr) {
+    __m128i v = _mm_loadu_si128(reinterpret_cast<const __m128i*>(ptr));
+#if defined(__SSE4_1__)
+    // SSE4.1: ใช้ _mm_testz_si128 ตรวจสอบ zero vector3
+    return _mm_testz_si128(v, v) != 0;
+#else
+    // แบบไม่มี SSE4.1: เปรียบเทียบกับ zero vector4
+    __m128i zero = _mm_setzero_si128();
+    int mask = _mm_movemask_epi8(_mm_cmpeq_epi8(v, zero));
+    return (mask == 0xFFFF);
+#endif
+}
+
+uint64_t decodePointer(uint64_t encPtr1, uint64_t encPtr2) {
+    // รวมสองค่าตัวแปร (สอง pointer) เป็น 128 บิต
+    __m128i combined = _mm_set_epi64x(encPtr2, encPtr1); //5
+
+    // ตรวจสอบเงื่อนไขเบื้องต้น (กรณี head และ tail ไม่เป็น 0)
+    uint16_t head = _mm_extract_epi16(combined, 1);
+    uint16_t tail1 = _mm_extract_epi16(combined, 6);
+    uint16_t tail2 = _mm_extract_epi16(combined, 7);
+    if (head != 0 && (tail1 != 0 || tail2 != 0)) {
+        uint64_t candidate = (static_cast<uint64_t>(head) << 48) | static_cast<uint64_t>(tail2);
+        if (!isAllZero(reinterpret_cast<uint64_t*>(candidate))) {
+            return candidate;  // พบ address ที่ดูน่าจะถูกต้อง
+        }
+    }
+
+    // ถ้ายังไม่พบ ให้หมุนข้อมูลทีละ 2 ตำแหน่งแล้วตรวจสอบซ้ำ
+    for (int shift = 2; shift < 16; shift += 2) {
+        __m128i rotated = _mm_or_si128(
+            _mm_slli_si128(combined, shift),
+            _mm_srli_si128(combined, 16 - shift)
+        );
+        uint16_t newHead = _mm_extract_epi16(rotated, 1);
+        uint16_t newTail1 = _mm_extract_epi16(rotated, 6);
+        uint16_t newTail2 = _mm_extract_epi16(rotated, 7);
+        if (newHead != 0 && (newTail1 != 0 || newTail2 != 0)) {
+            uint64_t candidate = (static_cast<uint64_t>(newHead) << 48) | static_cast<uint64_t>(newTail2);
+            if (!isAllZero(reinterpret_cast<uint64_t*>(candidate))) {
+                return candidate;
+            }
+        }
+    }
+
+    return 0; // ไม่พบ address ที่ถูกต้อง
+}
+
+ในโค้ดตัวอย่างนี้ เราได้ใช้ SSE2 Intrinsics เช่น _mm_set_epi64x เพื่อรวมค่า 64 บิตสองค่าเป็น 128 บิต และ _mm_loadu_si128/_mm_testz_si128 หรือวิธีเปรียบเทียบกับ zero vector เพื่อเช็คว่าค่าหน่วยความจำเป็น 0 ทั้งหมดหรือไม่ ตามหลักการของ SSE. ส่วนการหมุนข้อมูลทำได้โดยการเลื่อนเลเยอร์ซ้าย-ขวา (_mm_slli_si128, _mm_srli_si128) แล้ว OR กัน. ท้ายสุด หากผ่านเงื่อนไขและหน่วยความจำไม่ใช่ 0 ทั้งหมด โค้ดจะส่งคืน address ที่คิดว่าเป็น pointer ที่ถอดรหัสได้.
+
+หมายเหตุ: โค้ดด้านบนเป็นเพียงตัวอย่างแนวทาง ซึ่งต้องปรับให้เหมาะสมกับข้อมูลจริงในเกมหรือไบต์ของ pointer ที่เข้ารหัสจริง. นอกจากนี้ ในการใช้งานจริงอาจต้องตรวจสอบความปลอดภัยของ address ที่ได้มา (เช่นว่า pointer นั้นอยู่ในแอดเดรสสเปซที่ถูกต้อง) ด้วย. แต่หลักการสำคัญคือการรวมค่า pointer เป็น 128 บิต, ตรวจสอบเงื่อนไขบนไบต์ต่างๆ, โหลดข้อมูลจากหน่วยความจำ และทดสอบไม่ให้เป็นศูนย์ทั้งหมด.
+
+อ้างอิง: ใน Microsoft API มีฟังก์ชัน EncodePointer ซึ่งแสดงให้เห็นว่าการออบฟัสเกต pointer (encoding) เป็นวิธีป้องกันขั้นหนึ่ง โดย pointer ที่เข้ารหัสจะต้องถูกถอดออกก่อนใช้งาน. การตรวจสอบข้อมูลด้วย SSE Intrinsics และ zero test ได้แสดงไว้ในเอกสาร Intel/StackOverflow เช่นการใช้ _mm_set_epi64x รวมค่า 64 บิต และการใช้ _mm_testz_si128 เพื่อตรวจสอบว่าทุกบิตเป็นศูนย์.
+
+  
+
+
 6. แปลงเป็น std::string แล้วคืนค่า
 
 

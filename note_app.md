@@ -3,6 +3,396 @@
 https://m.youtube.com/watch?v=va4At4R7hbQ&pp=ygVF4Liq4Lit4LiZ4LmA4LiC4Li14Lii4LiZ4LmB4Lit4Lia4LmA4LiB4Lih4LiU4LmJ4Lin4LiiIFZzMjAyMiBwcm8gVWUg
 ```
 ```md
+
+จัดให้แบบ ครบแพ็ก ทั้ง
+เครื่องมือ Unity / Android / iOS / GPT / แหล่งโหลดฟรี / เว็บที่คนแจกของ / เว็บคุยเรื่อง Unity
+เพื่อให้เครื่องนายพร้อมทำเกมภายใน 1 เดือนจริง ๆ
+
+
+---
+
+🔥 PART 1 — รายการ “ต้องลง” สำหรับ Unity (ตัวหลัก)
+
+✔ 1) Unity Hub
+
+ดาวน์โหลด: https://unity.com/download
+
+ใช้ Unity Hub เป็นตัวจัดการ version และ module ทุกอย่าง
+
+
+---
+
+🔥 PART 2 — เลือก Unity Version ที่ดีที่สุด
+
+✔ แนะนำลง:
+
+Unity 2022 LTS (ยาวสุด, เสถียรสุด)
+รองรับทั้ง Android และ iOS ไม่พังง่าย
+
+ห้ามลง 2023/6000 ถ้ามีเวลาเร่งด่วน เพราะบางแพทช์ยังไม่นิ่ง
+
+
+---
+
+🔥 PART 3 — Module ที่ต้องลงเพิ่มใน Unity Hub
+
+เวลา Add module ให้ Unity:
+
+✔ 1) Android Build Support
+
+(จำเป็นสุด)
+
+ติ๊กทั้งหมดต่อไปนี้:
+
+✓ Android SDK
+
+✓ Android NDK (21–23)
+
+✓ OpenJDK
+
+✓ Android Build Tools
+
+
+> หลังจากติดตั้ง จะ build .APK / .AAB ได้ทันที
+
+
+
+
+---
+
+✔ 2) iOS Build Support
+
+(ใช้เฉพาะถ้านายมี Mac หรือเช่า Mac cloud)
+ติ๊ก:
+
+✓ iOS Build Support
+
+✓ iOS Support Tools
+
+
+> บน Windows จะ build “Xcode Project” ให้
+ต้องไปเปิดบน Mac เพื่อลง App Store อีกที
+
+
+
+
+---
+
+✔ 3) WebGL Build Support (optional)
+
+สำหรับทดสอบเกมบนเว็บแบบเร็ว
+(แต่เกมนายเป็น mobile ไม่ต้องก็ได้)
+
+
+---
+
+✔ 4) Windows Build Support (IL2CPP)
+
+ใช้รันบน Windows เพื่อ debug performance
+
+✓ Windows Build Support (IL2CPP)
+
+
+
+---
+
+📌 สรุปที่ต้องติ๊กใน Unity Hub
+
+[✔] Android Build Support
+      ├─ Android SDK & NDK Tools
+      ├─ OpenJDK
+[✔] iOS Build Support (optional)
+[✔] Windows Build Support (IL2CPP)
+[✔] WebGL Build Support (optional)
+
+
+---
+
+🔥 PART 4 — ของที่ต้องลงใน Visual Studio 2022 Pro (สำหรับ Unity)
+
+เปิด VS2022 → Tools → Get Tools and Features
+
+ติ๊ก:
+
+✔ 1) .NET Desktop Development
+
+C# compiler
+
+.NET 6/7/8 SDK
+
+
+✔ 2) Game Development with Unity
+
+Unity Debugger
+
+C# IDE Support
+(สำคัญมาก)
+
+
+✔ 3) Mobile Development with .NET
+
+Android Debug Bridge (ADB)
+
+Tools สำหรับเชื่อมอุปกรณ์ Android
+
+
+❌ ไม่จำเป็น
+
+Desktop development with C++
+
+Unreal Engine tools
+(เพราะนายใช้ Unity เป็นหลัก)
+
+
+
+---
+
+🔥 PART 5 — ลง GPT ให้ทำงานดีใน VS2022
+
+1) ติดตั้ง Extension “GitHub Copilot / Copilot Chat”
+
+เข้า VS2022:
+
+Extensions → Manage Extensions → Search: "Copilot"
+
+ลง 2 อัน:
+
+GitHub Copilot
+
+GitHub Copilot Chat
+
+
+
+---
+
+🔥 PART 6 — ปุ่มลัด (เปิด/ปิด AI ทันที)
+
+เข้า:
+Tools → Options → Environment → Keyboard
+
+ตั้งแบบนี้:
+
+✔ เปิด/ปิด AI Assist
+
+Command:
+
+Edit.ToggleCompletionMode
+
+ตั้งปุ่ม:
+
+Ctrl + Shift + A
+
+✔ ปิด AI แบบ Hard OFF
+
+Command:
+
+View.ManageAI
+
+ตั้งปุ่ม:
+
+Ctrl + Alt + 0
+
+> หมายเหตุ: กดปุ๊บ AI จะเงียบสนิท ไม่ auto-fix ไม่ auto-complete
+
+
+
+
+---
+
+🔥 PART 7 — ลงเครื่องมือเสริม Unity (แนะนำมาก)
+
+✔ DOTween (ฟรี) — ทำ UI สวยเร็ว
+
+ดาวน์โหลด: https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676
+
+✔ TextMeshPro (มาพร้อม Unity)
+
+เอาไว้ทำ UI ตัวหนังสือคม
+
+✔ Visual Scripting (Optional)
+
+สำหรับ event UI แบบไม่ต้องเขียนโค้ด
+
+✔ Unity Input System
+
+รองรับมือถือทั้ง touch/gesture
+
+✔ Addressables
+
+ไว้แยกเกมเป็นโมดูลโหลดเพิ่มแบบที่นายต้องการ
+
+
+---
+
+🔥 PART 8 — แหล่งแจก Asset ฟรี / คนคุยเยอะสุด
+
+⭐ 1) Unity Asset Store (หลัก)
+
+ของฟรีเพียบ
+https://assetstore.unity.com
+
+แนะนำหมวด:
+
+UI
+
+Casino
+
+2D Effects
+
+Mobile UI
+
+
+
+---
+
+⭐ 2) Unity Forum
+
+ที่คนถาม/แจก Script เยอะที่สุด
+https://forum.unity.com
+
+
+---
+
+⭐ 3) Reddit Community
+
+คนแชร์เทคนิคและแจก code:
+
+r/Unity2D
+https://www.reddit.com/r/Unity2D/
+
+r/Unity3D
+https://www.reddit.com/r/Unity3D/
+
+r/gamedev
+https://www.reddit.com/r/gamedev/
+
+
+
+---
+
+⭐ 4) itch.io — Asset ฟรีดีมาก
+
+https://itch.io/game-assets/free
+
+ค้นคำว่า:
+
+“card game”
+
+“casino ui”
+
+“poker assets"
+
+“2d effects”
+
+
+
+---
+
+⭐ 5) Kenney.nl — ฟรี 100%
+
+https://kenney.nl/assets
+
+มีชุด UI + ปุ่ม + เอฟเฟกต์
+เหมาะมากกับเกมมือถือ
+
+
+---
+
+⭐ 6) OpenGameArt
+
+https://opengameart.org
+
+ของฟรีคุณภาพดีจำนวนมาก
+
+
+---
+
+🔥 PART 9 — แหล่งแจกซอร์สเกม Unity ฟรีแบบใช้ต่อได้
+
+✔ Unity Poker Game
+
+https://github.com/MrRobinOfficial/Unity-Poker
+
+✔ Slot Machine Source
+
+https://github.com/lokeysharma/SlotGame
+
+✔ Multiplayer Lobby Template
+
+https://github.com/PradeepGameDev/MultiplayerWithPhoton
+
+✔ Card Game Framework (C#)
+
+https://github.com/EluciusFTW/CardGames
+
+
+---
+
+🔥 PART 10 — สรุปที่นายต้องทำ “ตอนนี้ทันที”
+
+📌 Step 1: ลง Unity Hub
+
+ลง Unity 2022 LTS
+
+ติ๊ก Android + iOS Build Support
+
+
+📌 Step 2: ตั้งค่า VS2022
+
+ลง “Game development with Unity”
+
+ลง Copilot/Copilot Chat
+
+ตั้งปุ่มลัดปิด/เปิด AI
+
+
+📌 Step 3: ลง Asset สำคัญ
+
+DOTween
+
+TMP
+
+Casino UI Pack
+
+
+📌 Step 4: Bookmark แหล่งโหลดฟรี
+
+Unity Asset Store
+
+itch.io
+
+Kenney
+
+Reddit / Unity Forum
+
+
+
+---
+
+ถ้านายต้องการ ผมสามารถสร้าง:
+
+✔ Unity Project Starter Kit ให้โหลดไปเปิดทันที
+✔ มี Lobby / Room / PokDeng GameMode / UI
+✔ พร้อมระบบ Addressable โหลดเกมเสริม
+✔ พร้อม ScriptableObject GameDefinition
+✔ พร้อมไฟล์ README อธิบายทุกส่วน
+
+แค่ตอบว่า
+“เอา Starter Kit”
+หรือบอกชื่อโปรเจกต์ที่นายจะตั้ง ชื่อว่าอะไรครับ?
+
+
+
+
+
+
+---
+
+
+ก่อนเลือก
+
+
+---
 โอเค เข้าใจ 100% เลย
 ตอนนี้สิ่งที่นายต้องการคือ:
 
